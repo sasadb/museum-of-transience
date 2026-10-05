@@ -1,1 +1,301 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ticket Wall - Museum of Transience</title>
+  <style>
+    .ticket-wall-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
+    .ticket-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 20px 10px;
+    }
+
+    .ticket-card {
+      position: relative;
+      background: #fdfbf7;
+      border: 1px solid #dcd6cd;
+      border-radius: 6px;
+      padding: 12px;
+      box-shadow: 2px 4px 10px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: all 0.35s ease;
+      transform: rotate(var(--rotation, 0deg));
+    }
+
+    /* Efek Pudar 9 Tiket (Paling Lama ke Paling Baru) */
+    .ticket-card:nth-child(1) { opacity: 0.35; filter: grayscale(90%); --rotation: -2deg; }
+    .ticket-card:nth-child(2) { opacity: 0.43; filter: grayscale(80%); --rotation: 1.5deg; }
+    .ticket-card:nth-child(3) { opacity: 0.51; filter: grayscale(70%); --rotation: -1deg; }
+    .ticket-card:nth-child(4) { opacity: 0.59; filter: grayscale(60%); --rotation: 2deg; }
+    .ticket-card:nth-child(5) { opacity: 0.67; filter: grayscale(50%); --rotation: -2.5deg; }
+    .ticket-card:nth-child(6) { opacity: 0.75; filter: grayscale(35%); --rotation: 1deg; }
+    .ticket-card:nth-child(7) { opacity: 0.83; filter: grayscale(20%); --rotation: -1.5deg; }
+    .ticket-card:nth-child(8) { opacity: 0.91; filter: grayscale(10%); --rotation: 2deg; }
+    .ticket-card:nth-child(9) { opacity: 1.00; filter: grayscale(0%);  --rotation: 0.5deg; }
+
+    .ticket-card:hover {
+      opacity: 1 !important;
+      filter: grayscale(0%) !important;
+      transform: scale(1.05) rotate(0deg) !important;
+      z-index: 10;
+      box-shadow: 4px 12px 20px rgba(0,0,0,0.18);
+    }
+
+    .ticket-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      aspect-ratio: 3 / 4;
+    }
+
+    .ticket-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .stamp-used {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-20deg);
+      border: 3px dashed #b93838;
+      color: #b93838;
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: bold;
+      font-size: 1.4rem;
+      padding: 4px 12px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-radius: 4px;
+      opacity: 0.85;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .ticket-info {
+      margin-top: 10px;
+      font-family: sans-serif;
+    }
+
+    .ticket-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #2c2c2c;
+      margin: 0 0 4px 0;
+    }
+
+    .ticket-meta {
+      font-size: 0.78rem;
+      color: #666;
+      margin: 0;
+    }
+
+    .status-badge {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.7rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 2px 6px;
+      background-color: #eee;
+      color: #555;
+      border-radius: 3px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-content {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 8px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="ticket-wall-container">
+  <h2>Ruang Tiket: Dinding Kenangan Perjalanan</h2>
+  <p style="color: #666; font-size: 0.9rem;">Urutan dari perjalanan paling lama (pudar) ke terbaru (jelas). Klik tiket untuk memperbesar.</p>
+
+  <div class="ticket-grid">
+
+    <!-- Tiket 1 (Paling Lama) -->
+    <figure class="ticket-card" onclick="openModal('assets/img/tiket-kereta-1.jpg')">
+      <div class="ticket-img-wrapper">
+        <img src="assets/img/tiket-kereta-1.jpg" alt="Tiket 1" loading="lazy">
+        <div class="stamp-used">USED</div>
+      </div>
+      <figcaption class="ticket-info">
+        <p class="ticket-title">Perjalanan #1</p>
+        <p class="ticket-meta">Daejeon $\rightarrow$ Seoul</p>
+        <span class="status-badge">Used</span>
+      </figcaption>
+    </figure>
+
+    <!-- Tiket 2 -->
+    <figure class="ticket-card" onclick="openModal('assets/img/tiket-kereta-2.jpg')">
+      <div class="ticket-img-wrapper">
+        <img src="assets/img/tiket-kereta-2.jpg" alt="Tiket 2" loading="lazy">
+        <div class="stamp-used">USED</div>
+      </div>
+      <figcaption class="ticket-info">
+        <p class="ticket-title">Perjalanan #2</p>
+        <p class="ticket-meta">Rute Kereta</p>
+        <span class="status-badge">Used</span>
+      </figcaption>
+    </figure>
+
+    <!-- Tiket 3 -->
+    <figure class="ticket-card" onclick="openModal('assets/img/tiket-kereta-3.jpg')">
+      <div class="ticket-img-wrapper">
+        <img src="assets/img/tiket-kereta-3.jpg" alt="Tiket 3" loading="lazy">
+        <div class="stamp-used">USED</div>
+      </div>
+      <figcaption class="ticket-info">
+        <p class="ticket-title">Perjalanan #3</p>
+        <p class="ticket-meta">Rute Kereta</p>
+        <span class="status-badge">Used</span>
+      </figcaption>
+    </figure>
+
+    <!-- Tiket 4 -->
+    <figure class="ticket-card" onclick="openModal('assets/img/tiket-kereta-4.jpg')">
+      <div class="ticket-img-wrapper">
+        <img src="assets/img/tiket-kereta-4.jpg" alt="Tiket 4" loading="lazy">
+        <div class="stamp-used">USED</div>
+      </div>
+      <figcaption class="ticket-info">
+        <p class="ticket-title">Perjalanan #4</p>
+        <p class="ticket-meta">Rute Kereta</p>
+        <span class="status-badge">Used</span>
+      </figcaption>
+    </figure>
+
+    <!-- Tiket 5 -->
+    <figure class="ticket-card" onclick="openModal('assets/img/tiket-kereta-5.jpg')">
+      <div class="ticket-img-wrapper">
+        <img src="assets/img/tiket-kereta-5.jpg" alt="Tiket 5" loading="lazy">
+        <div class="stamp-used">USED</div>
+      </div>
+      <figcaption class="ticket-info">
+        <p class="ticket-title">Perjalanan #5</p>
+        <p class="ticket-meta">Rute Kereta</p>
+        <span class="status-badge">Used</span>
+      </figcaption>
+    </figure>
+
+    <!-- Tiket 6 -->
+    <figure class="ticket-card" onclick="openModal('assets/img/tiket-kereta-6.jpg')">
+      <div class="ticket-img-wrapper">
+        <img src="assets/img/tiket-kereta-6.jpg" alt="Tiket 6" loading="lazy">
+        <div class="stamp-used">USED</div>
+      </div>
+      <figcaption class="ticket-info">
+        <p class="ticket-title">Perjalanan #6</p>
+        <p class="ticket-meta">Rute Kereta</p>
+        <span class="status-badge">Used</span>
+      </figcaption>
+    </figure>
+
+    <!-- Tiket 7 -->
+    <figure class="ticket-card" onclick="openModal('assets/img/tiket-kereta-7.jpg')">
+      <div class="ticket-img-wrapper">
+        <img src="assets/img/tiket-kereta-7.jpg" alt="Tiket 7" loading="lazy">
+        <div class="stamp-used">USED</div>
+      </div>
+      <figcaption class="ticket-info">
+        <p class="ticket-title">Perjalanan #7</p>
+        <p class="ticket-meta">Rute Kereta</p>
+        <span class="status-badge">Used</span>
+      </figcaption>
+    </figure>
+
+    <!-- Tiket 8 -->
+    <figure class="ticket-card" onclick="openModal('assets/img/tiket-kereta-8.jpg')">
+      <div class="ticket-img-wrapper">
+        <img src="assets/img/tiket-kereta-8.jpg" alt="Tiket 8" loading="lazy">
+        <div class="stamp-used">USED</div>
+      </div>
+      <figcaption class="ticket-info">
+        <p class="ticket-title">Perjalanan #8</p>
+        <p class="ticket-meta">Rute Kereta</p>
+        <span class="status-badge">Used</span>
+      </figcaption>
+    </figure>
+
+    <!-- Tiket 9 (Paling Baru) -->
+    <figure class="ticket-card" onclick="openModal('assets/img/tiket-kereta-9.jpg')">
+      <div class="ticket-img-wrapper">
+        <img src="assets/img/tiket-kereta-9.jpg" alt="Tiket 9" loading="lazy">
+        <div class="stamp-used">USED</div>
+      </div>
+      <figcaption class="ticket-info">
+        <p class="ticket-title">Perjalanan #9 (Terbaru)</p>
+        <p class="ticket-meta">Daejeon $\rightarrow$ Seoul</p>
+        <span class="status-badge">Used</span>
+      </figcaption>
+    </figure>
+
+  </div>
+</div>
+
+<!-- Modal Pop-up -->
+<div id="imageModal" class="modal" onclick="closeModal()">
+  <span class="modal-close">&times;</span>
+  <img class="modal-content" id="modalImg" alt="Detail Tiket">
+</div>
+
+<script>
+  function openModal(imgSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    modal.style.display = 'flex';
+    modalImg.src = imgSrc;
+  }
+
+  function closeModal() {
+    document.getElementById('imageModal').style.display = 'none';
+  }
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
+</script>
+
+</body>
+</html>
