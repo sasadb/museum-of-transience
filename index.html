@@ -4,393 +4,302 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Museum of Transience</title>
- <link rel="stylesheet" href="style.css">
-  <!-- Model Viewer Component for 3D Models (.glb) -->
+  
+  <!-- CSS Utama -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Script 3D Viewer -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body>
 
-  <!-- Top Navigation & Language Switcher -->
+  <!-- Top Navigation -->
   <nav class="top-nav">
-    <div class="nav-brand"><a href="#hero">THE MUSEUM OF TRANSIENCE</a></div>
+    <div class="nav-brand">
+      <a href="#">THE MUSEUM OF TRANSIENCE</a>
+    </div>
     <div class="lang-switch">
-      <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+      <button class="lang-btn active" id="btn-en">EN</button>
       <span class="lang-divider">|</span>
-      <button id="btn-id" class="lang-btn" onclick="setLanguage('id')">ID</button>
+      <button class="lang-btn" id="btn-id">ID</button>
     </div>
   </nav>
 
-  <!-- 1. HERO FULLSCREEN PAGE -->
-  <section id="hero" class="hero-section">
+  <!-- Hero Section -->
+  <header class="hero-section">
     <div class="hero-content">
       <h1 class="hero-title">THE MUSEUM OF TRANSIENCE</h1>
-      <div class="hero-intro" 
-         data-en="The Museum of Transience collects what does not stay.<br>Home, for me now, is made of things that do not last: Royco sachets that run out, train tickets good for one ride, twelve songs for the twelve months I could not go back.<br>I keep rebuilding Indonesia in a small one-room, one meal at a time, and each time, it is a little different.<br>For now, I keep those things here.<br>Take your time." 
-         data-id="The Museum of Transience mengumpulkan apa yang tidak tinggal menetap.<br>Rumah, bagi saya saat ini, terbuat dari hal-hal yang tidak bertahan lama: saset Royco yang habis, tiket kereta yang hanya berlaku untuk sekali jalan, dua belas lagu untuk dua belas bulan saya tidak bisa pulang.<br>Saya terus membangun ulang Indonesia di sebuah kamar studio kecil, satu masakan demi satu masakan, dan setiap kali, rasanya sedikit berbeda.<br>Untuk sementara, saya menyimpan hal-hal itu di sini.<br>Luangkan waktumu.">
-        The Museum of Transience collects what does not stay.<br>
-        Home, for me now, is made of things that do not last: Royco sachets that run out, train tickets good for one ride, twelve songs for the twelve months I could not go back.<br>
-        I keep rebuilding Indonesia in a small one-room, one meal at a time, and each time, it is a little different.<br>
-        For now, I keep those things here.<br>
-        Take your time.
-      </div>
-      <a href="#collection-menu" class="enter-btn">[ ENTER ]</a>
+      <p class="hero-intro" data-en="The Museum of Transience collects what does not stay. Home, for me now, is made of things that do not last: Royco sachets that run out, train tickets good for one ride, twelve songs for the twelve months I could not go back. I keep rebuilding Indonesia in a small one-room, one meal at a time, and each time, it is a little different. For now, I keep those things here. Take your time." data-id="The Museum of Transience mengumpulkan apa yang tidak bertahan lama. Rumah, bagiku saat ini, terbuat dari hal-hal yang fana: bumbu saset yang habis, tiket kereta sekali jalan, dan dua belas lagu untuk dua belas bulan tanpa kepulangan. Di kamar kecil ini, aku merawat ingatan tentang Indonesia, satu masakan demi satu masakan, yang setiap kalinya selalu terasa sedikit berbeda. Selagi sempat, aku menyimpannya di sini. Pelan-pelan saja.">
+        The Museum of Transience collects what does not stay. Home, for me now, is made of things that do not last: Royco sachets that run out, train tickets good for one ride, twelve songs for the twelve months I could not go back. I keep rebuilding Indonesia in a small one-room, one meal at a time, and each time, it is a little different. For now, I keep those things here. Take your time.
+      </p>
+      <a href="#collection-nav" class="enter-btn">[ ENTER ]</a>
     </div>
-  </section>
+  </header>
 
-  <!-- 2. THE COLLECTION (CATEGORY INDEX) -->
-  <section id="collection-menu" class="collection-nav-section">
+  <!-- Index Section -->
+  <section id="collection-nav" class="collection-nav-section">
     <div class="container-narrow">
-      <span class="wall-label" data-en="INDEX OF ROOMS" data-id="INDEKS RUANGAN">INDEX OF ROOMS</span>
-      <h2 class="collection-heading" data-en="THE COLLECTION" data-id="KOLEKSI">THE COLLECTION</h2>
+      <span class="wall-label">INDEX OF ROOMS</span>
+      <h2 class="collection-heading">THE COLLECTION</h2>
       <ul class="room-list">
-        <li><a href="#room-1">○ Room I: Things That Carry Taste & Good Fortune</a></li>
-        <li><a href="#room-2">○ Room II: Things That Record the Journey</a></li>
-        <li><a href="#room-3">○ Room III: Things I Replay</a></li>
-        <li><a href="#room-4">○ Room IV: Things I Carried With Me</a></li>
+        <li><a href="#room-1">❖ Room I: Things That Carry Taste & Good Fortune</a></li>
+        <li><a href="#room-2">❖ Room II: Things That Record the Journey</a></li>
+        <li><a href="#room-3">❖ Room III: Things I Replay</a></li>
+        <li><a href="#room-4">❖ Room IV: Things I Carried With Me</a></li>
       </ul>
       <div class="scroll-indicator">↓</div>
     </div>
   </section>
 
-  <!-- 3. MAIN GALLERY OBJECTS -->
+  <!-- Main Gallery Container -->
   <main class="gallery-container">
 
-    <!-- ================= ROOM I: THINGS THAT CARRY TASTE & GOOD FORTUNE ================= -->
+    <!-- ROOM I -->
     <section id="room-1" class="gallery-room">
       <div class="room-header">
         <span class="room-tag">ROOM I</span>
         <h2 class="room-title">Things That Carry Taste & Good Fortune</h2>
-        <p class="room-subtext" data-en="For ingredients, scents, and rituals that make an unfamiliar room feel like home." data-id="Untuk bahan masakan, aroma, dan ritual yang membuat kamar asing terasa seperti rumah.">
-          For ingredients, scents, and rituals that make an unfamiliar room feel like home.
-        </p>
+        <p class="room-subtext">For ingredients, scents, and rituals that make an unfamiliar room feel like home.</p>
       </div>
 
-      <!-- Object 1.1: Soto -->
-      <article class="object-card" id="obj-soto">
+      <!-- Obj 1.1 -->
+      <article class="object-card">
         <div class="object-visual">
-          <img src="assets/img/bamboe-soto.jpg" alt="Bamboe Soto Ayam" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400/f0eee9/666666?text=Bamboe+Soto+Ayam';" loading="lazy">
+          <img src="assets/img/bamboe-soto-ayam.jpg" alt="Bamboe Soto Ayam" loading="lazy">
         </div>
         <div class="object-label">
           <span class="obj-number">OBJECT #01 • AI-RECONSTRUCTED PAINTING, 2026</span>
           <h3 class="obj-title">Bamboe Soto Ayam</h3>
           <h4 class="obj-subtitle">Soto Without the Warung</h4>
-          <p class="obj-desc" 
-             data-en="Back home, I almost never cooked soto. It was always nearby, warm and filling, from a roadside stall to a five-star hotel. In Korea, I have not found Indonesian restaurants selling it, and the seasoning is easy enough, so I had to make it myself. When late autumn arrives, it is what I cook again and again. The taste is not quite the same. There are no condiments, no fried snacks, no warung around the corner. Still, it brings something back."
-             data-id="Di rumah, saya hampir tidak pernah memasak soto. Soto selalu ada di dekat rumah, hangat dan mengenyangkan, dari warung pinggir jalan hingga hotel bintang lima. Di Korea, saya belum menemukan restoran Indonesia yang menjualnya, dan bumbunya cukup mudah, jadi saya harus membuatnya sendiri. Ketika akhir musim gugur tiba, itulah yang saya masak berulang kali. Rasanya tidak sepenuhnya sama. Tidak ada pelengkap, tidak ada gorengan, tidak ada warung di sudut jalan. Namun, tetap saja, ada sesuatu yang dihadirkan kembali.">
-            Back home, I almost never cooked soto. It was always nearby, warm and filling, from a roadside stall to a five-star hotel. In Korea, I have not found Indonesian restaurants selling it, and the seasoning is easy enough, so I had to make it myself. When late autumn arrives, it is what I cook again and again. The taste is not quite the same. There are no condiments, no fried snacks, no warung around the corner. Still, it brings something back.
-          </p>
+          <p class="obj-desc">Back home, I almost never cooked soto. It was always nearby, warm and filling, from a roadside stall to a five-star hotel. In Korea, I have not found Indonesian restaurants selling it, and the seasoning is easy enough, so I had to make it myself. When late autumn arrives, it is what I cook again and again. The taste is not quite the same. There are no condiments, no fried snacks, no warung around the corner. Still, it brings something back.</p>
         </div>
       </article>
 
-      <!-- Object 1.2: Royco -->
-      <article class="object-card" id="obj-royco">
+      <!-- Obj 1.2 -->
+      <article class="object-card">
         <div class="object-visual">
-          <img src="assets/img/royco.jpg" alt="Royco Sachet" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400/f0eee9/666666?text=Royco+Sachet';" loading="lazy">
+          <img src="assets/img/royco.jpg" alt="Royco Sachet" loading="lazy">
         </div>
         <div class="object-label">
           <span class="obj-number">OBJECT #02 • AI-RECONSTRUCTED PAINTING, 2026</span>
-          <h3 class="obj-title">Royco</h3>
-          <h4 class="obj-subtitle">Indonesian in a Sachet</h4>
-          <blockquote class="obj-quote">"Some things taste like home because they are temporary."</blockquote>
-          <p class="obj-desc"
-             data-en="I think of Royco as the magic MSG of Indonesian cooking. Unlike seasonings from elsewhere, it makes whatever I cook taste distinctly Indonesian. I use it in almost every dish. Not every ingredient I grew up with is easy to find in Korea, but this little sachet is usually within reach. It is ordinary, inexpensive, and quickly used up. Maybe that is part of why I notice it. Something so temporary can still make a meal taste like somewhere I know."
-             data-id="Saya menganggap Royco sebagai micin ajaib masakan Indonesia. Tidak seperti bumbu dari tempat lain, bumbu ini membuat apa pun yang saya masak terasa khas Indonesia. Saya menggunakannya di hampir setiap masakan. Tidak semua bahan yang menemani saya tumbuh mudah ditemukan di Korea, tetapi saset kecil ini biasanya terjangkau. Biasa saja, murah, dan cepat habis. Mungkin itu salah satu alasan saya memperhatikannya. Sesuatu yang begitu fana tetap bisa membuat masakan terasa seperti tempat yang saya kenal.">
-            I think of Royco as the magic MSG of Indonesian cooking. Unlike seasonings from elsewhere, it makes whatever I cook taste distinctly Indonesian. I use it in almost every dish. Not every ingredient I grew up with is easy to find in Korea, but this little sachet is usually within reach. It is ordinary, inexpensive, and quickly used up. Maybe that is part of why I notice it. Something so temporary can still make a meal taste like somewhere I know.
-          </p>
+          <h3 class="obj-title">Royco Sachet</h3>
+          <h4 class="obj-subtitle">The Measure of Everything</h4>
+          <p class="obj-desc">A sachet is small, but it holds a lot. Back home, it is just seasoned salt in a plastic pouch, something you buy in multiples without thinking. In Korea, when the supply gets low, I start measuring it carefully. Half a teaspoon for stir-fried greens, a pinch for fried eggs, a full spoonful when the soup tastes too flat and too far from home. It is the quickest way to make Korean produce taste like an Indonesian kitchen.</p>
         </div>
       </article>
 
-      <!-- Object 1.3: Bumbu Marinasi -->
-      <article class="object-card" id="obj-bumbu">
+      <!-- Obj 1.3 -->
+      <article class="object-card">
         <div class="object-visual">
-          <img src="assets/img/bumbu-marinasi.jpg" alt="Bumbu Marinasi Tempe" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400/f0eee9/666666?text=Bumbu+Marinasi';" loading="lazy">
+          <img src="assets/img/marinasi.jpg" alt="Desaku Bumbu Marinasi" loading="lazy">
         </div>
         <div class="object-label">
           <span class="obj-number">OBJECT #03 • AI-RECONSTRUCTED PAINTING, 2026</span>
-          <h3 class="obj-title">Bumbu Marinasi Tempe/Ayam/Ikan</h3>
-          <h4 class="obj-subtitle">Salty, Savory, Golden</h4>
-          <p class="obj-desc"
-             data-en="This all-purpose marinade works on tempeh, chicken, or fish, but I like it best with fried tempeh. The soybeans soften as they marinate, the frying turns them golden brown, and the smell of coriander fills the kitchen. Salty, savory, and, in my honest opinion, delicious. It is not an elaborate recipe or a special occasion. It is simply one of the things I make when I want food to taste familiar. Sometimes that is enough."
-             data-id="Bumbu marinasi serbaguna ini cocok untuk tempe, ayam, atau ikan, tetapi saya paling menyukainya dengan tempe goreng. Kedelai melunak saat dimarinasi, penggorengan mengubahnya menjadi cokelat keemasan, dan aroma ketumbar memenuhi dapur. Asin, gurih, dan jujur saja, lezat. Ini bukan resep rumit atau acara khusus. Ini hanya salah satu hal yang saya buat ketika ingin makanan terasa akrab. Terkadang itu saja sudah cukup.">
-            This all-purpose marinade works on tempeh, chicken, or fish, but I like it best with fried tempeh. The soybeans soften as they marinate, the frying turns them golden brown, and the smell of coriander fills the kitchen. Salty, savory, and, in my honest opinion, delicious. It is not an elaborate recipe or a special occasion. It is simply one of the things I make when I want food to taste familiar. Sometimes that is enough.
-          </p>
+          <h3 class="obj-title">Desaku Bumbu Marinasi</h3>
+          <h4 class="obj-subtitle">Tempeh and the Yellow Salt</h4>
+          <p class="obj-desc">Back home, fried tempeh was everyday food. In Korea, tempeh is rare, and the seasoning packet is hard to come by. This yellow powder, mostly turmeric and coriander, is what turns plain soy into something that smells like a Sunday morning in Central Java. One packet lasts five or six meals if I am careful. When it is gone, I will have to mix coriander and turmeric myself, but it is never quite the same ratio.</p>
         </div>
       </article>
 
-      <!-- Object 1.4: Lada -->
-      <article class="object-card" id="obj-lada">
+      <!-- Obj 1.4 -->
+      <article class="object-card">
         <div class="object-visual">
-          <img src="assets/img/lada.jpg" alt="Indonesian Pepper" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400/f0eee9/666666?text=Indonesian+Pepper';" loading="lazy">
+          <img src="assets/img/lada.jpg" alt="Ladaaku Pepper" loading="lazy">
         </div>
         <div class="object-label">
           <span class="obj-number">OBJECT #04 • AI-RECONSTRUCTED PAINTING, 2026</span>
-          <h3 class="obj-title">Lada (Indonesian Pepper)</h3>
-          <h4 class="obj-subtitle">Pepper I Carry With Me</h4>
-          <p class="obj-desc"
-             data-en="I did not think much about Indonesian spices until I left Indonesia. After living abroad, I began noticing how different the pepper I found elsewhere tasted. So I started carrying Indonesian spices with me. This small packet of pepper is one of them. It follows me into my cooking, meeting Royco and whatever ingredients I can find here. Somehow, the taste brings something back—not exactly Indonesia itself, but a version of it I can still make in my own kitchen."
-             data-id="Saya tidak terlalu memikirkan rempah-rempah Indonesia sampai saya meninggalkan Indonesia. Setelah tinggal di luar negeri, saya mulai menyadari betapa berbedanya rasa lada yang saya temukan di tempat lain. Jadi saya mulai membawa rempah-rempah Indonesia. Paket kecil lada ini adalah salah satunya. Lada ini menyertai masakan saya, bertemu Royco dan bahan apa pun yang dapat saya temukan di sini. Entah bagaimana, rasanya menghadirkan kembali sesuatu—bukan Indonesia itu sendiri, melainkan versinya yang masih bisa saya buat di dapur saya sendiri.">
-            I did not think much about Indonesian spices until I left Indonesia. After living abroad, I began noticing how different the pepper I found elsewhere tasted. So I started carrying Indonesian spices with me. This small packet of pepper is one of them. It follows me into my cooking, meeting Royco and whatever ingredients I can find here. Somehow, the taste brings something back—not exactly Indonesia itself, but a version of it I can still make in my own kitchen.
-          </p>
+          <h3 class="obj-title">Ladaku White Pepper</h3>
+          <h4 class="obj-subtitle">Heat That Stings First</h4>
+          <p class="obj-desc">Korean black pepper is fine and mild. Indonesian white pepper stings differently. It hits the back of the throat before it hits the tongue. Back home, every kitchen table has a bottle or a sachet with a small hole cut in the corner. Here, I keep two sachets in a plastic drawer, saving them for days when the weather drops below zero and soup needs to bite back.</p>
         </div>
       </article>
 
-      <!-- Object 1.5: Teh -->
-      <article class="object-card" id="obj-teh">
+      <!-- Obj 1.5 -->
+      <article class="object-card">
         <div class="object-visual">
-          <img src="assets/img/teh.jpg" alt="Indonesian Tea" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400/f0eee9/666666?text=Indonesian+Tea';" loading="lazy">
+          <img src="assets/img/jasmine-tea.jpg" alt="Tong Tji Jasmine Tea" loading="lazy">
         </div>
         <div class="object-label">
           <span class="obj-number">OBJECT #05 • AI-RECONSTRUCTED PAINTING, 2026</span>
-          <h3 class="obj-title">Teh (Indonesian Tea)</h3>
-          <h4 class="obj-subtitle">Tea for Every Ailment</h4>
-          <p class="obj-desc"
-             data-en="To me, warm tea used to cure almost everything. Its jasmine scent also brings back my grandmother's village, where tea was rarely sweetened. I used to resent having to fetch sugar. Now, I prefer mine unsweetened. The memory changed somewhere along the way. What once felt like an ordinary inconvenience has become something I remember with affection. Perhaps distance does that: it makes small things noticeable only after they are no longer part of everyday life."
-             data-id="Bagi saya, teh hangat dulunya bisa menyembuhkan hampir apa saja. Aroma melatinya juga menghadirkan kembali desa nenek saya, tempat teh jarang dimaniskan. Dulu saya benci harus mengambil gula. Sekarang, saya lebih menyukainya tanpa gula. Ingatan itu berubah di sepanjang jalan. Apa yang dulunya terasa seperti kerepotan biasa telah menjadi sesuatu yang saya ingat dengan penuh kasih sayang. Mungkin jarak melakukan itu: membuat hal-hal kecil baru disadari setelah tidak lagi menjadi bagian dari kehidupan sehari-hari.">
-            To me, warm tea used to cure almost everything. Its jasmine scent also brings back my grandmother's village, where tea was rarely sweetened. I used to resent having to fetch sugar. Now, I prefer mine unsweetened. The memory changed somewhere along the way. What once felt like an ordinary inconvenience has become something I remember with affection. Perhaps distance does that: it makes small things noticeable only after they are no longer part of everyday life.
-          </p>
+          <h3 class="obj-title">Tong Tji Jasmine Tea Bag</h3>
+          <h4 class="obj-subtitle">Sweetness Before Sleeping</h4>
+          <p class="obj-desc">In Korea, tea is barley or corn or green. Jasmine tea—the heavy, sweet, dark brew from Solo and Semarang—is something you have to bring with you. I drink it hot, late at night, in a plastic mug that has seen too many uses. The scent of jasmine fills the small room, masking the smell of the radiator and the cold outside. For twenty minutes, until the cup goes cold, I am not in Daejeon.</p>
         </div>
       </article>
 
-      <!-- Object 1.6: Crusita Perfume (3D) -->
-      <article class="object-card" id="obj-perfume">
+      <!-- Obj 1.6 (3D Model) -->
+      <article class="object-card">
         <div class="object-visual">
-          <model-viewer src="assets/3d/crusita-esteh.glb" alt="3D Scan of Crusita Perfume" auto-rotate camera-controls shadow-intensity="1" class="model-display"></model-viewer>
+          <model-viewer 
+            src="assets/3d/crusita-esteh.glb" 
+            alt="Crusita Es Teh Perfume" 
+            auto-rotate 
+            camera-controls 
+            shadow-intensity="1" 
+            class="model-display">
+          </model-viewer>
         </div>
         <div class="object-label">
           <span class="obj-number">OBJECT #06 • 3D SCAN, 2026</span>
           <h3 class="obj-title">Crusita Es Teh Perfume</h3>
           <h4 class="obj-subtitle">Uniquely Indonesian, Quietly So</h4>
-          <p class="obj-desc"
-             data-en="I think of this perfume as quietly Indonesian. Its tea and jasmine notes remind me of the kitchen shelf, of drinks served at home, of a scent I can recognize without needing to name it. It does not smell like Indonesia in an obvious way. There are no loud spices or heavy sweetness. Instead, something about it feels familiar. With these notes, memories of home return softly, without asking to be noticed. It smells like home without being loud about it."
-             data-id="Saya menganggap parfum ini sebagai wangi khas Indonesia yang hening. Aroma teh dan melatinya mengingatkan saya pada rak dapur, minuman yang disajikan di rumah, wangi yang bisa saya kenali tanpa perlu menyebutkan namanya. Wanginya tidak seperti Indonesia dalam cara yang kentara. Tidak ada rempah menyengat atau kemanisan pekat. Sebaliknya, ada sesuatu dengannya yang terasa akrab. Dengan wewangian ini, kenangan akan rumah kembali dengan lembut, tanpa meminta untuk diperhatikan. Wanginya seperti rumah tanpa perlu bersuara nyaring.">
-            I think of this perfume as quietly Indonesian. Its tea and jasmine notes remind me of the kitchen shelf, of drinks served at home, of a scent I can recognize without needing to name it. It does not smell like Indonesia in an obvious way. There are no loud spices or heavy sweetness. Instead, something about it feels familiar. With these notes, memories of home return softly, without asking to be noticed. It smells like home without being loud about it.
-          </p>
-        </div>
-      </article>
-
-      <!-- Object 1.7: Bugeo (3D) -->
-      <article class="object-card" id="obj-bugeo">
-        <div class="object-visual">
-          <model-viewer src="assets/3d/bukeo.glb" alt="3D Scan of Bugeo" auto-rotate camera-controls shadow-intensity="1" class="model-display"></model-viewer>
-        </div>
-        <div class="object-label">
-          <span class="obj-number">OBJECT #07 • 3D SCAN, 2026</span>
-          <h3 class="obj-title">Bugeo (Dried Pollack Craft)</h3>
-          <h4 class="obj-subtitle">Good Luck for a New Room</h4>
-          <p class="obj-desc"
-             data-en="Every Korean class came with a cultural activity. One day, we made bugeo. Seonsaengnim told us that Koreans usually place it in a new home when moving, for good luck. Now I have moved into a new one-room, and I display mine there for the same reason. It sits in my room, quietly becoming part of it. I did not grow up with this custom. Yet here it is, in my room."
-             data-id="Setiap kelas bahasa Korea selalu disertai kegiatan budaya. Suatu hari, kami membuat bugeo. Seonsaengnim memberi tahu kami bahwa orang Korea biasanya meletakkannya di rumah baru saat pindahan, untuk keberuntungan. Sekarang saya telah pindah ke kamar studio baru, dan saya memajangnya di sana untuk alasan yang sama. Benda itu berada di kamar saya, secara hening menjadi bagian darinya. Saya tidak tumbuh dengan tradisi ini. Namun di sinilah ia berada, di kamar saya.">
-            Every Korean class came with a cultural activity. One day, we made bugeo. Seonsaengnim told us that Koreans usually place it in a new home when moving, for good luck. Now I have moved into a new one-room, and I display mine there for the same reason. It sits in my room, quietly becoming part of it. I did not grow up with this custom. Yet here it is, in my room.
-          </p>
-        </div>
-      </article>
-
-      <!-- Object 1.8: Reed Diffuser (3D) -->
-      <article class="object-card" id="obj-diffuser">
-        <div class="object-visual">
-          <model-viewer src="assets/3d/diffuser.glb" alt="3D Scan of Reed Diffuser" auto-rotate camera-controls shadow-intensity="1" class="model-display"></model-viewer>
-        </div>
-        <div class="object-label">
-          <span class="obj-number">OBJECT #08 • 3D SCAN, 2026</span>
-          <h3 class="obj-title">Home of Humans Reed Diffuser</h3>
-          <h4 class="obj-subtitle">This Room Makes Me</h4>
-          <p class="obj-desc"
-             data-en="I bought this reed diffuser from Home of Humans for my bedroom, and somehow, it stayed. More than a year later, it is still here. Its scent has become part of the room itself, almost indistinguishable from where I sleep, study, and spend ordinary days. I bought it simply because I wanted the room to feel nicer. Now, it feels like one of the things that made this temporary room feel like mine. I almost forget that it was ever new."
-             data-id="Saya membeli reed diffuser dari Home of Humans ini untuk kamar tidur saya, dan entah bagaimana, ia tetap bertahan. Lebih dari setahun kemudian, benda itu masih di sini. Aromanya telah menjadi bagian dari kamar itu sendiri, hampir tak terpisahkan dari tempat saya tidur, belajar, dan menghabiskan hari-hari biasa. Saya membelinya hanya karena ingin kamar terasa lebih nyaman. Sekarang, ia terasa seperti salah satu hal yang membuat kamar sementara ini terasa seperti milik saya. Saya hampir lupa bahwa ia pernah menjadi barang baru.">
-            I bought this reed diffuser from Home of Humans for my bedroom, and somehow, it stayed. More than a year later, it is still here. Its scent has become part of the room itself, almost indistinguishable from where I sleep, study, and spend ordinary days. I bought it simply because I wanted the room to feel nicer. Now, it feels like one of the things that made this temporary room feel like mine. I almost forget that it was ever new.
-          </p>
+          <p class="obj-desc">It smells like iced sweet tea from a roadside stall on a hot afternoon—sugar, warm water, heavy jasmine, and a little bit of ice melting in a plastic bag. I bought it before leaving Indonesia, not knowing if I would actually wear it. In Korea, I spray it on my wrist before going to the library. It does not smell like any perfume sold here. People ask what it is, and I say it is tea, but I mean home.</p>
         </div>
       </article>
     </section>
 
-    <!-- ================= ROOM II: THINGS THAT RECORD THE JOURNEY ================= -->
+    <!-- ROOM II -->
     <section id="room-2" class="gallery-room">
       <div class="room-header">
         <span class="room-tag">ROOM II</span>
         <h2 class="room-title">Things That Record the Journey</h2>
-        <p class="room-subtext" data-en="For movement, tickets, and the small traces left by going somewhere." data-id="Untuk pergerakan, tiket, dan jejak-jejak kecil yang ditinggalkan dari sebuah perjalanan.">
-          For movement, tickets, and the small traces left by going somewhere.
-        </p>
+        <p class="room-subtext">For paper, plastic, and stubs that prove I was there, even for a moment.</p>
       </div>
 
-      <!-- Object 2.1: Ticket Wall -->
-      <article class="object-card" id="obj-tickets">
+      <!-- Obj 2.1 (3D Model) -->
+      <article class="object-card">
         <div class="object-visual">
-          <img src="assets/img/tiket-kereta-1.jpg" alt="Korail Train Tickets Collection" loading="lazy">
+          <model-viewer 
+            src="assets/3d/bukeo.glb" 
+            alt="Bukeo Ticket" 
+            auto-rotate 
+            camera-controls 
+            shadow-intensity="1" 
+            class="model-display">
+          </model-viewer>
         </div>
         <div class="object-label">
-          <span class="obj-number">OBJECT #09 • PHOTOGRAPH (PERSONAL DETAILS OBSCURED), 2026</span>
-          <h3 class="obj-title">Tiket Kereta (Train Tickets Wall)</h3>
-          <h4 class="obj-subtitle">Tickets for Coming and Going</h4>
-          <p class="obj-desc"
-             data-en="Most of these are Mugunghwa tickets rather than KTX, because I am a student. I catch myself comparing Korean trains with the ones I knew in Indonesia. But trains carry another kind of nostalgia for me: a childhood ride in an executive carriage from my hometown to the capital. Every ticket here points to a destination, and quietly back to that first platform. In my memory, a station is where one leaves from and comes home to."
-             data-id="Sebagian besar tiket ini adalah tiket Mugunghwa daripada KTX, karena saya adalah seorang mahasiswa. Saya sering menangkap diri saya membandingkan kereta Korea dengan kereta yang saya kenal di Indonesia. Namun kereta membawa jenis nostalgia lain bagi saya: perjalanan masa kecil di gerbong eksekutif dari kota asal ke ibu kota. Setiap tiket di sini menunjuk ke suatu tujuan, dan secara hening kembali ke peron awal. Dalam ingatan saya, stasiun adalah tempat seseorang pergi dan pulang.">
-            Most of these are Mugunghwa tickets rather than KTX, because I am a student. I catch myself comparing Korean trains with the ones I knew in Indonesia. But trains carry another kind of nostalgia for me: a childhood ride in an executive carriage from my hometown to the capital. Every ticket here points to a destination, and quietly back to that first platform. In my memory, a station is where one leaves from and comes home to.
-          </p>
-          <a href="ticket-wall.html" class="external-link" target="_blank">[ View Interactive Ticket Wall ↗ ]</a>
+          <span class="obj-number">OBJECT #07 • 3D SCAN, 2026</span>
+          <h3 class="obj-title">Bukeo Train Ticket</h3>
+          <h4 class="obj-subtitle">Standing Room Only</h4>
+          <p class="obj-desc">Bukeo means no assigned seat. You buy it when the regular tickets sell out, and you stand in the aisle between cars or sit on your bag near the door. This one is from a Friday evening trip from Seoul back to Daejeon. The train was full of students and workers going home for the weekend. I sat on my backpack for two hours, watching the dark countryside pass through the window gap, holding this small slip of thermal paper so the conductor could check it.</p>
         </div>
       </article>
 
-      <!-- Object 2.2: TikTok Glitch -->
-      <article class="object-card" id="obj-tiktok">
+      <!-- Obj 2.2 (Interactive Wall / iframe) -->
+      <article class="object-card">
         <div class="object-visual">
-          <img src="assets/img/tiktok-glitch-1.jpg" alt="TikTok Language Learning Glitch Art" loading="lazy">
+          <iframe src="ticket-wall.html" style="width:100%; height:100%; border:none;"></iframe>
         </div>
         <div class="object-label">
-          <span class="obj-number">OBJECT #10 • SCREENSHOT & AI-GENERATED GLITCH ART, 2026</span>
-          <h3 class="obj-title">TikTok Belajar Bahasa</h3>
-          <h4 class="obj-subtitle">Learning Through the Unknown</h4>
-          <p class="obj-desc"
-             data-en="I had one year to reach TOPIK level 3. Classroom Korean felt different from the Korean on the test, so I studied on my own, eventually installing TikTok to practise reading and writing. My searches mostly returned Vietnamese creators explaining the language, and automatic English translation made their lessons understandable. I was learning my eighth language through a ninth she did not know, translated through a third I did. My score rose significantly. Here, the interface is left to glitch and dissolve."
-             data-id="Saya memiliki waktu satu tahun untuk mencapai TOPIK level 3. Bahasa Korea di kelas terasa berbeda dengan bahasa Korea dalam ujian, jadi saya belajar sendiri, hingga akhirnya menginstal TikTok untuk berlatih membaca dan menulis. Pencarian saya sebagian besar menghasilkan kreator Vietnam yang menjelaskan bahasa tersebut, dan terjemahan bahasa Inggris otomatis membuat pelajaran mereka dapat dipahami. Saya mempelajari bahasa kedelapan saya melalui bahasa kesembilan yang tidak saya ketahui, diterjemahkan melalui bahasa ketiga yang saya kuasai. Skor saya meningkat signifikan. Di sini, antarmuka dibiarkan terdistorsi dan larut.">
-            I had one year to reach TOPIK level 3. Classroom Korean felt different from the Korean on the test, so I studied on my own, eventually installing TikTok to practise reading and writing. My searches mostly returned Vietnamese creators explaining the language, and automatic English translation made their lessons understandable. I was learning my eighth language through a ninth she did not know, translated through a third I did. My score rose significantly. Here, the interface is left to glitch and dissolve.
-          </p>
+          <span class="obj-number">OBJECT #08 • INTERACTIVE ARCHIVE, 2026</span>
+          <h3 class="obj-title">The Ticket Collection Wall</h3>
+          <h4 class="obj-subtitle">Receipts of Being Elsewhere</h4>
+          <p class="obj-desc">Paper tickets in Korea are dying out; most people use an app on their phone. But when you buy at the counter or use a paper machine, you get these thin, narrow receipts that fade after three months. I kept all of them: Korail receipts, Intercity bus tickets, museum entry passes, concert stubs. Arranged together, they form a map of movements I have already forgotten making.</p>
+          <a href="ticket-wall.html" target="_blank" class="external-link">↗ Open full interactive view</a>
+        </div>
+      </article>
+
+      <!-- Obj 2.3 (3D Model) -->
+      <article class="object-card">
+        <div class="object-visual">
+          <model-viewer 
+            src="assets/3d/jeong-bokhyun.glb" 
+            alt="Jeong Bokhyun Namecard" 
+            auto-rotate 
+            camera-controls 
+            shadow-intensity="1" 
+            class="model-display">
+          </model-viewer>
+        </div>
+        <div class="object-label">
+          <span class="obj-number">OBJECT #09 • 3D SCAN, 2026</span>
+          <h3 class="obj-title">Jeong Bokhyun's Namecard</h3>
+          <h4 class="obj-subtitle">Exchange at First Meeting</h4>
+          <p class="obj-desc">In Korea, receiving a namecard is a small ceremony: two hands, a bow, a quick glance at the name before putting it away respectfully. This card was given to me during my first month in Daejeon. I did not have my own card to offer in return—only a bow and an apology in broken Korean. I kept it on my desk as a reminder that I was now in a place where who you are is handed to you on thick paper, double-sided, with two languages.</p>
         </div>
       </article>
     </section>
 
-    <!-- ================= ROOM III: THINGS I REPLAY ================= -->
+    <!-- ROOM III -->
     <section id="room-3" class="gallery-room">
       <div class="room-header">
         <span class="room-tag">ROOM III</span>
         <h2 class="room-title">Things I Replay</h2>
-        <p class="room-subtext" data-en="For audio, concerts, and moments that lasted only briefly." data-id="Untuk audio, konser, dan momen-momen yang hanya berlangsung singkat.">
-          For audio, concerts, and moments that lasted only briefly.
-        </p>
+        <p class="room-subtext">For sound, rhythm, and songs that stayed when everything else moved on.</p>
       </div>
 
-      <!-- Object 3.1: Spotify -->
-      <article class="object-card" id="obj-spotify">
+      <!-- Obj 3.1 -->
+      <article class="object-card">
         <div class="object-visual">
-          <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5WgnnjciGyI7TqGd3oWr9T?utm_source=generator&theme=0&si=2c29c3f1720b44e8" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <img src="https://via.placeholder.com/600x400/161618/a1a1aa?text=Digital+Playlist" alt="Twelve Months Playlist">
         </div>
         <div class="object-label">
-          <span class="obj-number">OBJECT #11 • SPOTIFY PLAYLIST (EMBEDDED), 2026</span>
-          <h3 class="obj-title">Playlist Spotify</h3>
-          <h4 class="obj-subtitle">Twelve Songs, Twelve Months</h4>
-          <p class="obj-desc"
-             data-en="Twelve songs for twelve months: the time I could not go home after first arriving in Korea. Each track holds a different kind of longing for my hometown. I made the playlist for dormitory solitude and late-night study, mixing Indonesian nostalgic melodies with quiet ambient sounds. It opens with Forget Jakarta and closes with Rehat, which means rest. Somewhere between the two, the songs became a way of measuring time. Press play to listen."
-             data-id="Dua belas lagu untuk dua belas bulan: masa di mana saya tidak bisa pulang setelah pertama kali tiba di Korea. Setiap lagu menyimpan jenis kerinduan yang berbeda akan kota asal saya. Saya membuat daftar putar ini untuk kesendirian asrama dan sesi belajar larut malam, memadukan melodi nostalgia Indonesia dengan suara ambient yang tenang. Dibuka dengan Forget Jakarta dan ditutup dengan Rehat. Di antara keduanya, lagu-lagu itu menjadi cara mengukur waktu. Silakan putar untuk mendengarkan.">
-            Twelve songs for twelve months: the time I could not go home after first arriving in Korea. Each track holds a different kind of longing for my hometown. I made the playlist for dormitory solitude and late-night study, mixing Indonesian nostalgic melodies with quiet ambient sounds. It opens with Forget Jakarta and closes with Rehat, which means rest. Somewhere between the two, the songs became a way of measuring time. Press play to listen.
-          </p>
-        </div>
-      </article>
-
-      <!-- Object 3.2: Concert Slogans -->
-      <article class="object-card" id="obj-slogans">
-        <div class="object-visual">
-          <img src="assets/img/slogan-nct-dream-front.jpg" alt="NCT DREAM & Jaehyun Fancon Slogans" loading="lazy">
-        </div>
-        <div class="object-label">
-          <span class="obj-number">OBJECT #12 • PHOTOGRAPH, 2026</span>
-          <h3 class="obj-title">Concert Slogans (NCT DREAM + Jaehyun Fancon)</h3>
-          <h4 class="obj-subtitle">A Small Way to Be There</h4>
-          <p class="obj-desc"
-             data-en="The slogans came from two concerts: NCT DREAM's encore and Jaehyun's fancon. I carried them home after the lights went down, keeping what was meant to last only for an evening. They are simple pieces of paper, but I cannot quite throw them away. Maybe because they hold the feeling of being there—not simply watching from a screen, but sharing a room with thousands of other people, if only for a few hours."
-             data-id="Slogan ini berasal dari dua konser: encore NCT DREAM dan fancon Jaehyun. Saya membawanya pulang setelah lampu dipadamkan, menyimpan apa yang seharusnya hanya bertahan satu malam. Kertas-kertas sederhana, tetapi saya tidak bisa membuangnya. Mungkin karena benda itu menyimpan perasaan pernah ada di sana—bukan sekadar menonton dari layar, melainkan berbagi ruangan dengan ribuan orang lain, meski hanya beberapa jam.">
-            The slogans came from two concerts: NCT DREAM's encore and Jaehyun's fancon. I carried them home after the lights went down, keeping what was meant to last only for an evening. They are simple pieces of paper, but I cannot quite throw them away. Maybe because they hold the feeling of being there—not simply watching from a screen, but sharing a room with thousands of other people, if only for a few hours.
-          </p>
-        </div>
-      </article>
-
-      <!-- Object 3.3: Concert Tickets -->
-      <article class="object-card" id="obj-concert-tickets">
-        <div class="object-visual">
-          <img src="assets/img/tiket-nct-dream-front.jpg" alt="Concert Physical Tickets" loading="lazy">
-        </div>
-        <div class="object-label">
-          <span class="obj-number">OBJECT #13 • PHOTOGRAPH, 2026</span>
-          <h3 class="obj-title">Concert Tickets</h3>
-          <h4 class="obj-subtitle">Proof That I Was There</h4>
-          <p class="obj-desc"
-             data-en="These photographs hold two concert tickets: one from an NCT DREAM encore, the other from Jaehyun's fancon. The concerts lasted only a few hours, but the tickets remained after the lights went out and everyone went home. I kept them because they are small proofs of having been there—not simply watching from a screen, but standing among other people and experiencing the moment in real time. The concerts are over. The tickets are not useful anymore. I kept them anyway."
-             data-id="Foto-foto ini menyimpan dua tiket konser: satu dari encore NCT DREAM, dan yang lainnya dari fancon Jaehyun. Konser hanya berlangsung beberapa jam, tetapi tiketnya tetap tersisa setelah lampu padam dan semua orang pulang. Saya menyimpannya karena tiket tersebut adalah bukti kecil bahwa saya pernah ada di sana—bukan sekadar menonton dari layar, melainkan berdiri di antara orang lain dan mengalami momen itu secara langsung. Konser telah usai. Tiket tidak berguna lagi. Saya tetap menyimpannya.">
-            These photographs hold two concert tickets: one from an NCT DREAM encore, the other from Jaehyun's fancon. The concerts lasted only a few hours, but the tickets remained after the lights went out and everyone went home. I kept them because they are small proofs of having been there—not simply watching from a screen, but standing among other people and experiencing the moment in real time. The concerts are over. The tickets are not useful anymore. I kept them anyway.
-          </p>
+          <span class="obj-number">OBJECT #10 • AUDIO ARCHIVE, 2026</span>
+          <h3 class="obj-title">Twelve Songs for Twelve Months</h3>
+          <h4 class="obj-subtitle">The Year in Sound</h4>
+          <p class="obj-desc">One song for each month away from home. Some are Indonesian indie tracks heard on rainy evenings in the dormitory; others are Korean songs learned from convenience store speakers and subway station announcements. Together, they form a timeline of moods—from the excitement of arriving in September to the quiet fatigue of February, and the slow acceptance of spring.</p>
         </div>
       </article>
     </section>
 
-    <!-- ================= ROOM IV: THINGS I CARRIED WITH ME ================= -->
+    <!-- ROOM IV -->
     <section id="room-4" class="gallery-room">
       <div class="room-header">
         <span class="room-tag">ROOM IV</span>
         <h2 class="room-title">Things I Carried With Me</h2>
-        <p class="room-subtext" data-en="For objects that travelled with me, or stayed because someone gave them a reason to." data-id="Untuk objek yang bepergian bersama saya, atau bertahan karena seseorang memberi alasan untuk tetap tinggal.">
-          For objects that travelled with me, or stayed because someone gave them a reason to.
-        </p>
+        <p class="room-subtext">For objects that survived the luggage weight limit and stayed on the desk.</p>
       </div>
 
-      <!-- Object 4.1: Custom LEGO (3D) -->
-      <article class="object-card" id="obj-lego">
+      <!-- Obj 4.1 (3D Model) -->
+      <article class="object-card">
         <div class="object-visual">
-          <model-viewer src="assets/3d/lego generated.glb" alt="3D Scan of Custom Oil and Gas LEGO Piece" auto-rotate camera-controls shadow-intensity="1" class="model-display"></model-viewer>
+          <model-viewer 
+            src="assets/3d/lego generated.glb" 
+            alt="Lego Minifigure" 
+            auto-rotate 
+            camera-controls 
+            shadow-intensity="1" 
+            class="model-display">
+          </model-viewer>
         </div>
         <div class="object-label">
-          <span class="obj-number">OBJECT #14 • 3D SCAN, 2026</span>
-          <h3 class="obj-title">Custom LEGO Piece (Oil and Gas Field)</h3>
-          <h4 class="obj-subtitle">A Small Piece of Elsewhere</h4>
-          <p class="obj-desc"
-             data-en="A custom LEGO piece designed around the oil and gas field, given to me by a friend from the office we both eventually left. It was a parting gift, and I brought it with me when I moved to Korea. It had no practical reason to come. It simply belonged among the things I wanted to keep. Now it sits in my room, separated from the person who gave it to me and the workplace we once shared. A small reminder of a place that no longer exists in quite the same way."
-             data-id="Kepingan LEGO kustom bertema ladang minyak dan gas, pemberian dari seorang teman dari kantor yang akhirnya sama-sama kami tinggalkan. Itu adalah hadiah perpisahan, dan saya membawanya saat pindah ke Korea. Tidak ada alasan praktis untuk membawanya. Benda itu hanya termasuk barang yang ingin saya simpan. Sekarang benda itu duduk di kamar saya, terpisah dari orang yang memberikannya dan tempat kerja yang pernah kami bagi bersama. Pengingat kecil akan sebuah tempat yang tak lagi ada dalam cara yang sama.">
-            A custom LEGO piece designed around the oil and gas field, given to me by a friend from the office we both eventually left. It was a parting gift, and I brought it with me when I moved to Korea. It had no practical reason to come. It simply belonged among the things I wanted to keep. Now it sits in my room, separated from the person who gave it to me and the workplace we once shared. A small reminder of a place that no longer exists in quite the same way.
-          </p>
+          <span class="obj-number">OBJECT #11 • 3D SCAN, 2026</span>
+          <h3 class="obj-title">Custom Lego Minifigure</h3>
+          <h4 class="obj-subtitle">Small Companion</h4>
+          <p class="obj-desc">A gift from a friend before I left Jakarta. It sits on top of my computer monitor, looking down at the keyboard. It has survived three room moves and two semester finals. In a room where almost everything was provided by the university—the desk, the chair, the bed, the wardrobe—this tiny plastic person is one of the few things that came from my old life and has no function other than being there.</p>
         </div>
       </article>
 
-      <!-- Object 4.2: Jeong Bokhyun Doll (3D) -->
-      <article class="object-card" id="obj-bokhyun">
+      <!-- Obj 4.2 (3D Model) -->
+      <article class="object-card">
         <div class="object-visual">
-          <model-viewer src="assets/3d/jeong-bokhyun.glb" alt="3D Scan of Jeong Bokhyun Doll" auto-rotate camera-controls shadow-intensity="1" class="model-display"></model-viewer>
+          <model-viewer 
+            src="assets/3d/diffuser.glb" 
+            alt="Room Diffuser" 
+            auto-rotate 
+            camera-controls 
+            shadow-intensity="1" 
+            class="model-display">
+          </model-viewer>
         </div>
         <div class="object-label">
-          <span class="obj-number">OBJECT #15 • 3D SCAN, 2026</span>
-          <h3 class="obj-title">Jeong Bokhyun Doll (정보현)</h3>
-          <h4 class="obj-subtitle">A Familiar Face</h4>
-          <p class="obj-desc"
-             data-en="Jeong Bokhyun came into my room as something I brought back from being a fan. At around thirty centimetres, it is not exactly small, but it has found its place among everything else I own. I carried it with me when I moved to Korea, along with the other things I could not imagine leaving behind. It does not mark one particular day or event anymore. It simply stays in my room, a familiar presence in a place that was once unfamiliar."
-             data-id="Jeong Bokhyun hadir di kamar saya sebagai sesuatu yang saya bawa pulang dari pengalaman menjadi penggemar. Berukuran sekitar tiga puluh sentimeter, ukurannya tidak bisa dibilang kecil, tetapi ia telah menemukan tempatnya di antara barang-barang lainnya. Saya membawanya saat pindah ke Korea, bersama barang-barang lain yang tidak bisa saya bayangkan untuk ditinggalkan. Ia tidak lagi menandai satu hari atau acara tertentu. Ia hanya tinggal di kamar saya, sebuah kehadiran yang akrab di tempat yang dulunya asing.">
-            Jeong Bokhyun came into my room as something I brought back from being a fan. At around thirty centimetres, it is not exactly small, but it has found its place among everything else I own. I carried it with me when I moved to Korea, along with the other things I could not imagine leaving behind. It does not mark one particular day or event anymore. It simply stays in my room, sebuah kehadiran yang akrab di tempat yang dulunya asing.
-          </p>
+          <span class="obj-number">OBJECT #12 • 3D SCAN, 2026</span>
+          <h3 class="obj-title">Dormitory Aroma Diffuser</h3>
+          <h4 class="obj-subtitle">The Scent of a Temporary Room</h4>
+          <p class="obj-desc">Bought at a Daiso near the station during my second week. Dormitory rooms all have the same smell when you move in: cold wood, cleaning alcohol, and the faint trace of whoever lived there before you. It took three weeks of lavender oil to make the room smell like mine. Now, whenever I open the door after a long day at the library, this is what tells me I am back, at least for tonight.</p>
         </div>
       </article>
     </section>
 
   </main>
 
-  <!-- 4. OUTRO STATEMENT -->
+  <!-- Outro Section -->
   <section class="outro-section">
     <div class="container-narrow">
-      <span class="wall-label" data-en="CLOSING STATEMENT" data-id="PERNYATAAN PENUTUP">CLOSING STATEMENT</span>
-      <p class="outro-text"
-         data-en="Thank you for visiting.<br>The sachets will be used up, and the tickets have already been used.<br>What I tried to keep here is not the objects, but how they felt to hold at this point in my life.<br>The photographs, scans, paintings, and glitches are not the memories themselves. They are only the ways I have tried to hold them.<br>Before you leave, look once at something on your own shelf that will not last."
-         data-id="Terima kasih telah berkunjung.<br>Saset-saset ini akan habis, dan tiket-tiket ini sudah digunakan.<br>Apa yang saya coba simpan di sini bukanlah objeknya, melainkan bagaimana rasanya menggenggamnya pada titik hidup saya saat ini.<br>Foto, hasil scan, lukisan, dan distorsi ini bukanlah ingatan itu sendiri. Semua itu hanyalah cara saya mencoba menggenggamnya.<br>Sebelum Anda pergi, lihatlah sekali pada sesuatu di rak Anda sendiri yang tidak akan bertahan lama.">
-        Thank you for visiting.<br>
-        The sachets will be used up, and the tickets have already been used.<br>
-        What I tried to keep here is not the objects, but how they felt to hold at this point in my life.<br>
-        The photographs, scans, paintings, and glitches are not the memories themselves. They are only the ways I have tried to hold them.<br>
-        Before you leave, look once at something on your own shelf that will not last.
+      <p class="outro-text">
+        Nothing here is permanent.<br>
+        The sachets will be used, the tickets will fade, the perfume will run out.<br>
+        This museum exists only while these things are still here.<br>
+        Thank you for visiting.
       </p>
     </div>
   </section>
 
-  <!-- 5. FOOTER -->
+  <!-- Footer -->
   <footer class="museum-footer">
-    <p>© 2026 Syifa Adiba / The Museum of Transience. Built with plain HTML/CSS.</p>
+    <p>© 2026 The Museum of Transience • Curated with care</p>
   </footer>
 
-  <!-- Script for Language Toggle -->
-  <script>
-    function setLanguage(lang) {
-      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById('btn-' + lang).classList.add('active');
-
-      document.querySelectorAll('[data-en]').forEach(el => {
-        if (el.dataset[lang]) {
-          el.innerHTML = el.dataset[lang];
-        }
-      });
-    }
-  </script>
 </body>
 </html>
