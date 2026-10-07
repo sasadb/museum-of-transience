@@ -1,0 +1,200 @@
+// Generated from your exhibition text. Edit wording here if needed.
+window.MUSEUM={
+ "INTRO": [
+  "The Museum of Transience collects what does not stay.",
+  "Home, for me now, is made of things that do not last: Royco sachets that run out, train tickets good for one ride, twelve songs for the twelve months I could not go back.",
+  "I keep rebuilding Indonesia in a small one-room, one meal at a time, and each time, it is a little different.",
+  "For now, I keep those things here.",
+  "Take your time."
+ ],
+ "ROOM1": [
+  {
+   "name": "Indomie Goreng",
+   "medium": "AI-Reconstructed Painting, 2026",
+   "title": "The Taste I Don't Have to Think About",
+   "img": "public/assets/img/indomie.jpg",
+   "text": "I never thought much about Indomie Goreng when I was in Indonesia. It was cheap, easy, and always there when I wanted something familiar. In Korea, I started noticing how comforting it was to make the same thing again: the noodles, the seasoning, the sweet-salty taste I already knew by heart. Nothing about it is special, and maybe that is exactly why I keep coming back to it. Some foods become memories only after you have to leave them behind."
+  },
+  {
+   "name": "Bamboe Soto Ayam",
+   "medium": "AI-Reconstructed Painting, 2026",
+   "title": "Soto Without the Warung",
+   "img": "public/assets/img/bamboe-soto-ayam.jpg",
+   "text": "Back home, I almost never cooked soto. It was always nearby, warm and filling, from a roadside stall to a five-star hotel. In Korea, I have not found Indonesian restaurants selling it, and the seasoning is easy enough, so I had to make it myself. When late autumn arrives, it is what I cook again and again. The taste is not quite the same. There are no condiments, no fried snacks, no warung around the corner. Still, it brings something back."
+  },
+  {
+   "name": "Royco",
+   "medium": "AI-Reconstructed Painting, 2026",
+   "title": "Indonesian in a Sachet",
+   "img": "public/assets/img/royco.jpg",
+   "text": "I think of Royco as the magic MSG of Indonesian cooking. Unlike seasonings from elsewhere, it makes whatever I cook taste distinctly Indonesian. I use it in almost every dish. Not every ingredient I grew up with is easy to find in Korea, but this little sachet is usually within reach. It is ordinary, inexpensive, and quickly used up. Maybe that is part of why I notice it. Something so temporary can still make a meal taste like somewhere I know."
+  },
+  {
+   "name": "Bumbu Marinasi Tempe/Ayam/Ikan",
+   "medium": "AI-Reconstructed Painting, 2026",
+   "title": "Salty, Savory, Golden",
+   "img": "public/assets/img/marinasi.jpg",
+   "text": "This all-purpose marinade works on tempeh, chicken, or fish, but I like it best with fried tempeh. The soybeans soften as they marinate, the frying turns them golden brown, and the smell of coriander fills the kitchen. Salty, savory, and, in my honest opinion, delicious. It is not an elaborate recipe or a special occasion. It is simply one of the things I make when I want food to taste familiar. Sometimes that is enough."
+  },
+  {
+   "name": "Lada (Indonesian Pepper)",
+   "medium": "AI-Reconstructed Painting, 2026",
+   "title": "Pepper I Carry With Me",
+   "img": "public/assets/img/lada.jpg",
+   "text": "I did not think much about Indonesian spices until I left Indonesia. After living abroad, I began noticing how different the pepper I found elsewhere tasted. So, I started carrying Indonesian spices with me. This small packet of pepper is one of them. It follows me into my cooking, meeting Royco and whatever ingredients I can find here. Somehow, the taste brings something back—not exactly Indonesia itself, but a version of it I can still make in my own kitchen."
+  },
+  {
+   "name": "Teh (Indonesian Tea)",
+   "medium": "AI-Reconstructed Painting, 2026",
+   "title": "Tea for Every Ailment",
+   "img": "public/assets/img/jasmine-tea.jpg",
+   "text": "To me, warm tea used to cure almost everything. Its jasmine scent also brings back my grandmother's village, where tea was rarely sweetened. I used to resent having to fetch sugar. Now, I prefer mine unsweetened. The memory changed somewhere along the way. What once felt like an ordinary inconvenience has become something I remember with affection. Perhaps distance does that: it makes small things noticeable only after they are no longer part of everyday life."
+  },
+  {
+   "name": "Crusita Es Teh Perfume",
+   "medium": "3D Scan, 2026",
+   "title": "Uniquely Indonesian, Quietly So",
+   "glb": "public/assets/3d/crusita-esteh.glb",
+   "text": "I think of this perfume as quietly Indonesian. Its tea and jasmine notes remind me of the kitchen shelf, of drinks served at home, of a scent I can recognize without having to name it. It does not smell like Indonesia in any obvious way. There are no loud spices or heavy sweetness. Just something familiar, something I seem to know before I can place it. Perhaps that is what I like about it. It brings home back in the smallest way—not as a place, but as a feeling I can still recognize."
+  },
+  {
+   "name": "Bugeo (Dried Pollack Craft)",
+   "medium": "3D Scan, 2026",
+   "title": "Good Luck for a New Room",
+   "glb": "public/assets/3d/bukeo.glb",
+   "text": "Every Korean class came with a cultural activity. One day, we made bugeo (북어). The teacher told us that Koreans usually place it in a new home when moving, for good luck. Now I have moved into a new one-room, and I display mine there for the same reason. It sits in my room, quietly becoming part of it. I did not grow up with this custom. Yet here it is, in my room."
+  },
+  {
+   "name": "Home of Humans Reed Diffuser",
+   "medium": "3D Scan, 2026",
+   "title": "This Room Makes Me",
+   "glb": "public/assets/3d/diffuser.glb",
+   "text": "I bought this reed diffuser for my bedroom because I wanted the room to feel nicer. I did not expect to keep it for this long. More than a year later, its scent has become part of the room itself—mixed into the air where I sleep, study, eat, and spend ordinary days. Somewhere along the way, I stopped noticing it as something I had bought and started noticing it as part of where I lived. The room was temporary. Somehow, this stayed."
+  }
+ ],
+ "ROOM4": [
+  {
+   "name": "Custom LEGO Piece (Oil and Gas Field)",
+   "medium": "3D Scan, 2026",
+   "title": "A Small Piece of Elsewhere",
+   "glb": "public/assets/3d/lego%20generated.glb",
+   "text": "A friend from the office gave me this custom LEGO piece, designed around the oil and gas field, when we were both preparing to leave a workplace we had once shared. It was a parting gift, and when I moved to Korea, I brought it with me.\n\nIt did not need to come. It was small enough to fit almost anywhere, but there was no practical reason to make space for it. I brought it because someone had given it to me, and because leaving a place does not always mean leaving everything behind.\n\nNow it sits in my room, far from the office and the person who gave it to me. The place it came from has changed. I have too. Somehow, this small piece remained."
+  },
+  {
+   "name": "Jeong Bokhyun Doll (정보현)",
+   "medium": "3D Scan, 2026",
+   "title": "A Familiar Face",
+   "glb": "public/assets/3d/jeong-bokhyun.glb",
+   "text": "I bought Jeong Bokhyun (정보현) in Korea, before Jaehyun's fancon. At the time, it felt like a small marker of something returning—a comeback, a concert to look forward to, and the particular excitement of being a fan again.\n\nLater, when I moved from my first dorm into this one-room, he came with me. At around thirty centimetres, he was not exactly easy to overlook, but somehow he became part of the move, along with the things that made the new room feel familiar.\n\nHe was not something I brought from home. I found him here. But somewhere between one room and another, he became part of mine."
+  }
+ ],
+ "ROOMS": [
+  {
+   "n": "I",
+   "title": "Things That Carry Taste & Good Fortune",
+   "sub": "For ingredients, scents, and rituals that make an unfamiliar room feel like home."
+  },
+  {
+   "n": "II",
+   "title": "Things That Record the Journey",
+   "sub": "For movement, tickets, and the small traces left by going somewhere."
+  },
+  {
+   "n": "III",
+   "title": "Things I Replay",
+   "sub": "For audio, concerts, and moments that lasted only briefly."
+  },
+  {
+   "n": "IV",
+   "title": "Things That Stayed With Me",
+   "sub": "For objects that crossed a distance, or simply found their way into my room."
+  }
+ ],
+ "TRAIN_TITLE": "Tickets for Coming and Going",
+ "TRAIN_TEXT": [
+  "Most of these are Mugunghwa tickets. As a student, it is usually the train I take. Sometimes, while looking at them, I catch myself comparing Korean trains with the ones I knew in Indonesia. But what I remember most is not really the trains themselves.",
+  "When I was a child, I once took an executive train from my hometown to the capital. I remember the feeling of being on my way somewhere, watching the landscape pass by, knowing that eventually I would arrive. I think that memory stayed with me more than I realized.",
+  "Now I collect tickets from journeys of my own. They point to different destinations, different days, different versions of me. But somehow, they keep leading back to the same feeling: that a station is where you leave from, and where you hope to return to."
+ ],
+ "TIKTOK": {
+  "medium": "Screenshot and AI-Generated Glitch Art, 2026",
+  "title": "A Language I Learned Sideways",
+  "text": [
+   "Learning Korean did not always feel straightforward. What I heard in the classroom was not always what appeared on the test, so I began looking for other ways to practise reading and writing. Eventually, I found myself on TikTok.",
+   "Most of the useful explanations that reached me came from Vietnamese creators. When I could not understand the Vietnamese, automatic English translation helped fill the gaps. Somehow, I was learning my eighth language through a ninth language I did not know, translated through a third that I did.",
+   "It was an unusual way to learn. But it worked. The interface became part of the process: another layer between me and the language I was trying to understand. Here, I leave those layers to glitch and dissolve."
+  ]
+ },
+ "SPOTIFY": {
+  "name": "Playlist Spotify",
+  "medium": "Spotify Playlist (Embedded), 2026",
+  "title": "Twelve Songs, Twelve Months",
+  "text": "Twelve songs for twelve months: the time I could not go home after first arriving in Korea. Each track holds a different kind of longing for my hometown. I made the playlist for dormitory solitude and late-night study, mixing Indonesian nostalgic melodies with quiet ambient sounds. It opens with Forget Jakarta and closes with Rehat, which means rest. Somewhere between the two, the songs became a way of measuring time. Press play to listen."
+ },
+ "SLOGANS": {
+  "name": "Concert Slogans (NCT DREAM + Jaehyun Fancon)",
+  "medium": "Photograph, 2026",
+  "title": "A Small Way to Be There",
+  "text": "The slogans came from two concerts: NCT DREAM's encore and Jaehyun's fancon. I carried them home after the lights went down, keeping what was meant to last only for an evening. They are simple pieces of paper, but I cannot quite throw them away. Maybe because they hold the feeling of being there—not simply watching from a screen, but sharing a room with thousands of other people, if only for a few hours."
+ },
+ "TICKETS": {
+  "name": "Concert Tickets",
+  "medium": "Photograph, 2026",
+  "title": "Proof That I Was There",
+  "text": "These photographs hold two concert tickets: one from an NCT DREAM encore, the other from Jaehyun's fancon. The concerts lasted only a few hours, but the tickets remained after the lights went out and everyone went home. I kept them because they are small proofs of having been there—not simply watching from a screen, but standing among other people and experiencing the moment in real time. The concerts are over. The tickets are not useful anymore. I kept them anyway."
+ },
+ "OUTRO": [
+  "Thank you for visiting.",
+  "The sachets will be used up, and the tickets have already been used.",
+  "What I tried to keep here is not the objects, but how they felt to hold at this point in my life.",
+  "The photographs, scans, paintings, and glitches are not the memories themselves. They are only the ways I have tried to hold them.",
+  "Before you leave, look once at something on your own shelf that will not last."
+ ],
+ "A": {
+  "indomie": "public/assets/img/indomie.jpg",
+  "soto": "public/assets/img/bamboe-soto-ayam.jpg",
+  "royco": "public/assets/img/royco.jpg",
+  "marinasi": "public/assets/img/marinasi.jpg",
+  "lada": "public/assets/img/lada.jpg",
+  "tea": "public/assets/img/jasmine-tea.jpg",
+  "trains": [
+   "public/assets/img/tiket-kereta-1.jpg",
+   "public/assets/img/tiket-kereta-2.jpg",
+   "public/assets/img/tiket-kereta-3.jpg",
+   "public/assets/img/tiket-kereta-4.jpg",
+   "public/assets/img/tiket-kereta-5.jpg",
+   "public/assets/img/tiket-kereta-6.jpg"
+  ],
+  "tiktok": [
+   "public/assets/img/tiktok-glitch-1.jpg",
+   "public/assets/img/tiktok-glitch-2.jpg"
+  ],
+  "slogan": {
+   "jaehyun": [
+    "public/assets/img/slogan-jaehyun-front.jpg",
+    "public/assets/img/slogan-jaehyun-back.jpg"
+   ],
+   "nct": [
+    "public/assets/img/slogan-nct-dream-front.jpg",
+    "public/assets/img/slogan-nct-dream-back.jpg"
+   ]
+  },
+  "ticket": {
+   "jaehyun": [
+    "public/assets/img/ticket-jaehyun-front.jpg",
+    "public/assets/img/ticket-jaehyun-back.jpg"
+   ],
+   "nct": [
+    "public/assets/img/tiket-nct-dream-front.jpg",
+    "public/assets/img/tiket-nct-dream-back.jpg"
+   ]
+  },
+  "glb": {
+   "crusita": "public/assets/3d/crusita-esteh.glb",
+   "bugeo": "public/assets/3d/bukeo.glb",
+   "diffuser": "public/assets/3d/diffuser.glb",
+   "jeong": "public/assets/3d/jeong-bokhyun.glb",
+   "lego": "public/assets/3d/lego%20generated.glb"
+  }
+ }
+};
