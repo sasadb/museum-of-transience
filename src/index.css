@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@theme{--font-display:"Instrument Serif",Georgia,serif;--font-sans:"Inter",system-ui,sans-serif;--font-script:"Marck Script",cursive;
+--color-paper:#E9E2D4;--color-ink:#0A0A0A;--color-muted:#8f8473;--color-rust:#C0755A}
+html{scroll-behavior:smooth}
+body{background:#0A0A0A;color:var(--color-paper);font-family:var(--font-sans);line-height:1.7}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
