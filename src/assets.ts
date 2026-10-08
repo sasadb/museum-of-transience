@@ -3,7 +3,6 @@ const i = (f: string) => `${B}assets/img/${f}`
 const m = (f: string) => `${B}assets/3d/${encodeURIComponent(f)}` // keeps "lego generated.glb" filename intact
 export const A = {
   saleh: i('raden-saleh-tijgerjacht.jpg'),
-  saleh: i('raden-saleh-tijgerjacht.jpg'),
   indomie: i('indomie.jpg'), soto: i('bamboe-soto-ayam.jpg'), royco: i('royco.jpg'),
   marinasi: i('marinasi.jpg'), lada: i('lada.jpg'), tea: i('jasmine-tea.jpg'),
   trains: [1, 2, 3, 4, 5, 6].map(n => i(`tiket-kereta-${n}.jpg`)),
