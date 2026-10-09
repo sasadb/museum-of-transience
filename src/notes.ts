@@ -3,7 +3,7 @@
 // Key = the object's title exactly as written in data.ts.
 export type Note = { tool?: string; prompt?: string; flaw?: string }
 export const NOTES: Record<string, Note> = {
-  "The Taste I Don't Have to Think About": { tool: '', prompt: '', flaw: '' },
+  "The Taste I Knew by Heart": { tool: '', prompt: '', flaw: '' },
   "Soto Without the Warung": { tool: '', prompt: '', flaw: '' },
   "Indonesian in a Sachet": { tool: '', prompt: '', flaw: '' },
   "Salty, Savory, Golden": { tool: '', prompt: '', flaw: '' },

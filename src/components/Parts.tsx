@@ -10,7 +10,8 @@ import { CURATOR_NOTE, NOTES } from '../notes'
 const ease = [0.22, 1, 0.36, 1] as const
 export const Reveal = ({ children, className = '', delay = 0 }: { children: ReactNode; className?: string; delay?: number }) => (
   <motion.div className={className} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-12%' }} transition={{ duration: 1.3, delay, ease }}>{children}</motion.div>)
-export const Paras = ({ t, className = '' }: { t: string; className?: string }) => <>{t.split('\n\n').map((p, i) => <p key={i} className={`mt-4 first:mt-0 ${className}`}>{p}</p>)}</>
+export const nb = (s: string) => s.replace(/ (\S+)$/, '\u00A0$1') // keeps the last word from hanging alone
+export const Paras = ({ t, className = '' }: { t: string; className?: string }) => <>{t.split('\n\n').map((p, i) => <p key={i} className={`mt-4 first:mt-0 text-justify hyphens-auto ${className}`}>{nb(p)}</p>)}</>
 
 export const Notes = ({ k }: { k?: string }) => {
   const n = k ? NOTES[k] : undefined
@@ -27,8 +28,8 @@ export const Plaque = ({ no, name, medium, title, children, dark, notes }: { no?
   <div>
     <p className="text-[11px] uppercase tracking-[.22em] text-rust">{[no, name].filter(Boolean).join(' · ')}</p>
     <p className={`mt-1 text-xs ${dark ? 'text-paper/60' : 'text-muted'}`}>{medium}</p>
-    <h3 className="mt-5 font-display text-5xl leading-[1.02] md:text-6xl">{title}</h3>
-    <div className={`mt-6 max-w-[46ch] text-[15px] ${dark ? 'text-paper/80' : 'text-ink/85'}`}>{children}<Notes k={notes} /></div>
+    <h3 className="mt-4 font-display text-3xl leading-[1.1] md:text-4xl">{title}</h3>
+    <div className={`mt-6 max-w-xl text-base leading-relaxed ${dark ? 'text-paper/80' : 'text-ink/85'}`}>{children}<Notes k={notes} /></div>
   </div>)
 
 const SLIDES = [A.indomie, A.soto, A.royco, A.marinasi, A.lada, A.tea]
@@ -111,15 +112,21 @@ export function SpotifySection({ children }: { children: ReactNode }) {
     </div>)
 }
 
-export function MuseumNavigation() {
+export function MuseumNavigation({ rooms }: { rooms: string[] }) {
   const [on, setOn] = useState('')
   useEffect(() => {
-    const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && setOn((e.target as HTMLElement).dataset.room || '')), { threshold: 0.25 })
-    document.querySelectorAll('[data-room]').forEach(el => io.observe(el)); return () => io.disconnect()
-  }, [])
+    // Active room = the one crossing 40% of the viewport height (rooms are taller than the screen, so a visibility ratio never works)
+    const f = () => {
+      let cur = ''
+      document.querySelectorAll<HTMLElement>('[data-room]').forEach(el => { const r = el.getBoundingClientRect(); if (r.top <= innerHeight * 0.4 && r.bottom > innerHeight * 0.4) cur = el.dataset.room || '' })
+      setOn(cur)
+    }
+    f(); addEventListener('scroll', f, { passive: true }); addEventListener('resize', f)
+    return () => { removeEventListener('scroll', f); removeEventListener('resize', f) }
+  }, [rooms.join()])
   return (
-    <nav aria-label="Rooms" className="fixed right-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col gap-3 text-right mix-blend-difference md:flex">
-      {ROOMS.map(r => <a key={r.n} href={`#room-${r.n}`} aria-label={`Room ${r.n}: ${r.title}`} aria-current={on === r.n} className={`font-display text-lg text-paper transition-opacity focus-visible:outline-2 focus-visible:outline-rust ${on === r.n ? 'opacity-100' : 'opacity-40 hover:opacity-80'}`}>{r.n}</a>)}
+    <nav aria-label="Rooms" className="fixed right-3 top-1/2 z-40 flex -translate-y-1/2 flex-col gap-3 text-right mix-blend-difference md:right-5">
+      {ROOMS.filter(r => rooms.includes(r.n)).map(r => <a key={r.n} href={`#room-${r.n}`} aria-label={`Room ${r.n}: ${r.title}`} aria-current={on === r.n ? 'location' : undefined} className={`font-display text-lg text-paper transition-opacity focus-visible:outline-2 focus-visible:outline-rust ${on === r.n ? 'opacity-100' : 'opacity-35 hover:opacity-80'}`}>{r.n}</a>)}
     </nav>)
 }
 

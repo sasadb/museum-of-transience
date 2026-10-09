@@ -7,7 +7,7 @@ import FlipArtifact from './components/FlipArtifact'
 import Img from './components/Img'
 import ThreeDObject from './components/ThreeDObject'
 import TicketArchive from './components/TicketArchive'
-import { CuratorNote, GlitchArtwork, MuseumNavigation, Notes, Paras, Plaque, Reveal, SpotifySection } from './components/Parts'
+import { CuratorNote, GlitchArtwork, MuseumNavigation, Notes, Paras, Plaque, Reveal, SpotifySection, nb } from './components/Parts'
 
 const ease = [0.22, 1, 0.36, 1] as const
 const SLIDES = [A.saleh, A.soto, A.tea, A.indomie, A.royco, A.marinasi, A.lada]
@@ -50,10 +50,13 @@ function Hero() {
       </AnimatePresence>
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-black/50" />
       <Traces show={on} seed={k + 1} src={SLIDES[k]} fit="cover" />
-      <p className="absolute left-[5vw] top-8 max-w-[15rem] text-[12px] leading-snug text-paper/80">A personal collection of things that do not stay.</p>
       <a href="#statement" className="absolute right-[5vw] top-6 inline-flex items-center gap-3 rounded-full border border-paper/60 px-8 py-3 font-display text-lg tracking-widest focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-paper">ENTER THE COLLECTION <ArrowRight size={16} /></a>
-      <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 2, delay: 0.4, ease }}
-        className="absolute bottom-[7vh] right-[5vw] text-right font-display text-[clamp(3.4rem,10.5vw,11.5rem)] leading-[.9]">The Museum<br />of Transience</motion.h1>
+      <div className="absolute bottom-[7vh] right-[5vw] text-right">
+        <motion.h1 initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 2, delay: 0.4, ease }}
+          className="font-display text-[clamp(3.4rem,10.5vw,11.5rem)] leading-[.9]">The Museum<br />of Transience</motion.h1>
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2, delay: 1.4 }}
+          className="mt-6 font-display text-xl italic text-paper/80 md:text-2xl">A personal collection of things that do not stay.</motion.p>
+      </div>
     </header>)
 }
 
@@ -62,10 +65,10 @@ function Statement() {
   return (
     <section id="statement" className="relative flex flex-col bg-[#8C4331] pt-[18vh] text-center">
       <div className="mx-auto flex max-w-[900px] flex-col items-center px-8">
-        <Reveal><p className="max-w-[420px] text-balance text-[15px] uppercase leading-[1.7] tracking-[.14em]">{(INTRO[0])}</p></Reveal>
-        <Reveal className="mt-14 max-w-[460px] space-y-6 text-[16px] font-light leading-[1.7]">{INTRO.slice(1, 4).map(t => <p key={t} className="text-balance">{(t)}</p>)}</Reveal>
+        <Reveal><p className="max-w-[420px] text-balance text-[15px] uppercase leading-[1.7] tracking-[.14em]">{nb(INTRO[0])}</p></Reveal>
+        <Reveal className="mt-14 max-w-[460px] space-y-6 text-[16px] font-light leading-[1.7]">{INTRO.slice(1, 4).map(t => <p key={t} className="text-balance">{nb(t)}</p>)}</Reveal>
         <Reveal className="mt-10 font-script text-[clamp(3.5rem,11vw,8rem)] leading-none">{INTRO[4]}</Reveal>
-        <Reveal className="mt-16 max-w-[460px] space-y-5 border-t border-paper/30 pt-10 text-[14px] font-light leading-[1.7]">{CAPSULE.map(t => <p key={t} className="text-balance">{(t)}</p>)}</Reveal>
+        <Reveal className="mt-16 max-w-[460px] space-y-5 border-t border-paper/30 pt-10 text-[14px] font-light leading-[1.7]">{CAPSULE.map(t => <p key={t} className="text-balance">{nb(t)}</p>)}</Reveal>
       </div>
       <div className="relative mt-24">
         <Img src={A.soto} alt="" className="block h-[75vh] w-full object-cover object-top" />
@@ -114,22 +117,17 @@ function Item({ o, n, i, traces }: { o: Obj; n: number; i: number; traces: boole
       </Reveal>
       <Reveal delay={0.2} className={`md:col-span-6 ${flip ? 'md:col-start-1 md:row-start-1' : 'md:col-start-7'}`}>{text}</Reveal>
     </article>)
-  return (
+  return ( // landscape art: image first, then one unified plaque (number, medium, title, narrative)
     <article>
       <Reveal>
-        <div className="relative h-[min(86vh,62vw)] min-h-[320px] w-full overflow-hidden bg-[#0f0d0c]">
+        <div className="relative h-[min(78vh,56vw)] min-h-[300px] w-full overflow-hidden bg-[#0f0d0c]">
           <motion.div className="h-full w-full" initial={{ scale: 1.12 }} whileInView={{ scale: 1 }} viewport={view} transition={{ duration: 2.6, ease }}>
             <Img src={o.img!} alt={`${o.title}, ${o.medium}`} className="h-full w-full object-contain" />
           </motion.div>
           <Traces show={traces} seed={n} src={o.img} fit="contain" />
-          <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28 bg-gradient-to-b from-black/80 to-transparent" />
-          <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-2/3 bg-gradient-to-t from-black/85 to-transparent" />
-          <p className="absolute left-5 top-5 z-20 text-[11px] uppercase tracking-[.22em] text-paper [text-shadow:0_1px_6px_rgba(0,0,0,.8)]">{no} · {o.medium}</p>
-          <motion.h3 initial={{ y: 40, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} viewport={view} transition={{ duration: 1.4, delay: 0.4, ease }}
-            className="absolute bottom-4 right-5 z-20 max-w-[85%] text-right font-display text-[clamp(2.2rem,6.2vw,6.5rem)] leading-[.95] [text-shadow:0_2px_16px_rgba(0,0,0,.7)]">{o.title}</motion.h3>
         </div>
       </Reveal>
-      <div className="mt-6 max-w-[48ch] text-[13px] leading-relaxed text-paper/75 md:ml-[5vw]"><Paras t={o.text} /><Notes k={o.title} /></div>
+      <Reveal delay={0.2} className={`mt-10 max-w-2xl ${flip ? 'md:ml-auto md:mr-[6vw]' : 'md:ml-[6vw]'}`}>{text}</Reveal>
     </article>)
 }
 
@@ -211,7 +209,7 @@ export default function App() {
       <CuratorNote />
       <footer className="grid min-h-screen place-items-center px-[6vw] py-[20vh] text-center">
         <div className="max-w-xl space-y-8 font-display text-2xl leading-snug md:text-3xl">
-          {OUTRO.map((p, k) => <Reveal key={k}><p className={k ? 'text-paper/60' : ''}>{(p)}</p></Reveal>)}
+          {OUTRO.map((p, k) => <Reveal key={k}><p className={k ? 'text-paper/60' : ''}>{nb(p)}</p></Reveal>)}
           <Reveal><p className="pt-20 font-sans text-[11px] uppercase tracking-[.4em]">The Museum of Transience</p></Reveal>
           <Reveal><button onClick={top} className="mx-auto inline-flex items-center gap-2 font-sans text-[11px] uppercase tracking-[.3em] text-paper/70 hover:text-paper focus-visible:outline-2 focus-visible:outline-rust">Back to top <ArrowUp size={14} /></button></Reveal>
           <Reveal><p className="pt-6 font-sans text-[11px] leading-relaxed text-paper/50">Opening image: Raden Saleh, <i>Tijgerjacht</i>, before 1880. Collection NMvWereldculturen, RV-3155-304. Public domain,{' '}

@@ -24,8 +24,8 @@ export const ROOM4: Obj[] = [
 export const ROOMS = [
   { n: 'I', title: 'Things That Carry Taste & Good Fortune', sub: 'For ingredients, scents, and rituals that make an unfamiliar room feel like home.' },
   { n: 'II', title: 'Things That Record the Journey', sub: 'For movement, tickets, and the small traces left by going somewhere.' },
-  { n: 'III', title: 'Things I Replay', sub: 'For audio, concerts, and moments that lasted only briefly.' },
-  { n: 'IV', title: 'Things That Stayed With Me', sub: 'For objects that crossed a distance, or simply found their way into my room.' },
+  { n: 'III', title: 'Echoes & Encores', sub: 'For melodies, fan banners, and shared spaces that kept enthusiasm alive.' },
+  { n: 'IV', title: 'Reconstructions & Afterimages', sub: 'For AI-reconstructed memories, quiet rooms, and fragments that stayed behind.' },
 ]
 export const TRAIN_MEDIUM = 'Photograph (personal details obscured), 2026'
 export const TRAIN_TITLE = 'Tickets for Coming and Going'
@@ -41,4 +41,4 @@ export const OUTRO = ['Thank you for visiting.', 'The sachets will be used up, a
 // Room IV was folded into Room I as a chapter, so the museum has three rooms.
 // Added intro copy: edit freely, it is your voice.
 export const CAPSULE = ['This museum is a digital memory capsule: a small, personal archive of ordinary things, such as Indomie, Royco, train tickets, and a Spotify playlist, kept here because each one carried a piece of home with me.',
-  'It is arranged in four rooms. Room I holds what carries taste and good fortune. Room II records the journey. Room III holds what I replay. Room IV keeps what stayed with me.']
+  'It is arranged in four rooms. Room I holds what carries taste and good fortune. Room II records the journey. Room III gathers echoes and encores. Room IV keeps reconstructions and afterimages.']
