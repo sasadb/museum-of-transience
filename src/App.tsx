@@ -2,12 +2,13 @@ import { useEffect, useState, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArrowRight, ArrowUp } from 'lucide-react'
 import { A } from './assets'
-import { CAPSULE, INTRO, OUTRO, ROOM1, ROOM4, ROOMS, SLOGANS, SPOTIFY, TICKETS, TIKTOK, TRAIN_MEDIUM, TRAIN_TEXT, TRAIN_TITLE, type Obj } from './data'
+import { INTRO, OUTRO, ROOM1, ROOM4, ROOMS, SLOGANS, SPOTIFY, TICKETS, TIKTOK, TRAIN_MEDIUM, TRAIN_TEXT, TRAIN_TITLE, SIDE_NOTE, PIECE_NOTES, type Obj } from './data'
 import FlipArtifact from './components/FlipArtifact'
+import ObjectModal from './components/ObjectModal'
 import Img from './components/Img'
 import ThreeDObject from './components/ThreeDObject'
 import TicketArchive from './components/TicketArchive'
-import { CuratorNote, GlitchArtwork, MuseumNavigation, Notes, Paras, Plaque, Reveal, SpotifySection, nb } from './components/Parts'
+import { CuratorNote, GlitchArtwork, MuseumNavigation, Notes, Paras, Plaque, Reveal, RoomPathfinder, SpotifySection, nb } from './components/Parts'
 
 const ease = [0.22, 1, 0.36, 1] as const
 const SLIDES = [A.saleh, A.soto, A.tea, A.indomie, A.royco, A.marinasi, A.lada]
@@ -61,14 +62,15 @@ function Hero() {
 }
 
 /* Intro text, exact and in order, on a solid rust field with a painting rising from the bottom. */
-function Statement() {
+function Statement({ rooms }: { rooms: string[] }) {
+  // INTRO = [poem line, poem line, poem line, capsule sentence]
   return (
     <section id="statement" className="relative flex flex-col bg-[#8C4331] pt-[18vh] text-center">
-      <div className="mx-auto flex max-w-[900px] flex-col items-center px-8">
-        <Reveal><p className="max-w-[420px] text-balance text-[15px] uppercase leading-[1.7] tracking-[.14em]">{nb(INTRO[0])}</p></Reveal>
-        <Reveal className="mt-14 max-w-[460px] space-y-6 text-[16px] font-light leading-[1.7]">{INTRO.slice(1, 4).map(t => <p key={t} className="text-balance">{nb(t)}</p>)}</Reveal>
-        <Reveal className="mt-10 font-script text-[clamp(3.5rem,11vw,8rem)] leading-none">{INTRO[4]}</Reveal>
-        <Reveal className="mt-16 max-w-[460px] space-y-5 border-t border-paper/30 pt-10 text-[14px] font-light leading-[1.7]">{CAPSULE.map(t => <p key={t} className="text-balance">{nb(t)}</p>)}</Reveal>
+      <div className="mx-auto flex w-full max-w-[900px] flex-col items-center px-8">
+        <Reveal className="max-w-[460px] space-y-6 text-[16px] font-light leading-[1.7]">{INTRO.slice(0, 3).map(t => <p key={t} className="text-balance">{nb(t)}</p>)}</Reveal>
+        <Reveal className="mt-10 font-script text-[clamp(3.5rem,11vw,8rem)] leading-none">Take your time.</Reveal>
+        <Reveal className="mt-16 max-w-[460px] border-t border-paper/30 pt-10 text-[14px] font-light leading-[1.7]"><p className="text-balance">{nb(INTRO[3])}</p></Reveal>
+        <Reveal className="mt-14 w-full max-w-4xl border-t border-paper/30 pt-10"><RoomPathfinder rooms={rooms} /></Reveal>
       </div>
       <div className="relative mt-24">
         <Img src={A.soto} alt="" className="block h-[75vh] w-full object-cover object-top" />
@@ -94,47 +96,31 @@ function Bar({ f, setF, t, setT }: { f: F; setF: (f: F) => void; t: boolean; set
 
 function Item({ o, n, i, traces }: { o: Obj; n: number; i: number; traces: boolean }) {
   const no = String(n).padStart(2, '0')
-  const view = { once: true, margin: '-10%' } as const
   const flip = i % 2 === 1
-  const [portrait, setPortrait] = useState(false)
-  useEffect(() => {
-    if (!o.img) return
-    const im = new Image(); im.onload = () => setPortrait(im.naturalHeight > im.naturalWidth * 1.05); im.src = o.img
-  }, [o.img])
   const text = <Plaque dark no={no} medium={o.medium} title={o.title} notes={o.title}><Paras t={o.text} /></Plaque>
   if (o.glb) return (
     <article className="grid items-center gap-10 md:grid-cols-12">
       <Reveal className={`bg-[#121110] md:col-span-7 ${flip ? 'md:order-2' : ''}`}><ThreeDObject src={o.glb} alt={o.title} /></Reveal>
       <Reveal delay={0.2} className="md:col-span-5 md:px-6">{text}</Reveal>
     </article>)
-  if (portrait) return ( // portrait art: image and text side by side, no empty black sides
-    <article className="grid items-center gap-10 md:grid-cols-12">
-      <Reveal className={`md:col-span-5 ${flip ? 'md:col-start-8' : 'md:col-start-1'}`}>
-        <div className="relative mx-auto w-fit bg-[#0f0d0c]">
-          <Img src={o.img!} alt={`${o.title}, ${o.medium}`} className="block max-h-[88vh] w-auto max-w-full object-contain" />
+  // Every painting: image and plaque share one balanced two-column grid, alternating sides.
+  // The frame hugs the image (w-fit), so portrait and landscape art never leave empty black margins.
+  return (
+    <article className="grid items-center gap-10 md:grid-cols-2 md:gap-16 lg:gap-24">
+      <Reveal className={flip ? 'md:order-2' : ''}>
+        <div className="relative mx-auto w-fit max-w-full bg-[#0f0d0c]">
+          <Img src={o.img!} alt={`${o.title}, ${o.medium}`} className="block max-h-[80vh] w-auto max-w-full object-contain" />
           <Traces show={traces} seed={n} src={o.img} fit="contain" />
         </div>
       </Reveal>
-      <Reveal delay={0.2} className={`md:col-span-6 ${flip ? 'md:col-start-1 md:row-start-1' : 'md:col-start-7'}`}>{text}</Reveal>
-    </article>)
-  return ( // landscape art: image first, then one unified plaque (number, medium, title, narrative)
-    <article>
-      <Reveal>
-        <div className="relative h-[min(78vh,56vw)] min-h-[300px] w-full overflow-hidden bg-[#0f0d0c]">
-          <motion.div className="h-full w-full" initial={{ scale: 1.12 }} whileInView={{ scale: 1 }} viewport={view} transition={{ duration: 2.6, ease }}>
-            <Img src={o.img!} alt={`${o.title}, ${o.medium}`} className="h-full w-full object-contain" />
-          </motion.div>
-          <Traces show={traces} seed={n} src={o.img} fit="contain" />
-        </div>
-      </Reveal>
-      <Reveal delay={0.2} className={`mt-10 max-w-2xl ${flip ? 'md:ml-auto md:mr-[6vw]' : 'md:ml-[6vw]'}`}>{text}</Reveal>
+      <Reveal delay={0.2}>{text}</Reveal>
     </article>)
 }
 
 function Room({ i, children, dark }: { i: number; children: ReactNode; dark?: boolean }) {
   const r = ROOMS[i]
   return (
-    <section id={`room-${r.n}`} data-room={r.n} className={`px-[6vw] py-[14vh] ${dark ? 'bg-[#0e0c0b]' : ''}`}>
+    <section id={`room-${r.n}`} data-room={r.n} className={`scroll-mt-16 px-[6vw] py-[14vh] ${dark ? 'bg-[#0e0c0b]' : ''}`}>
       <Reveal className="mb-[10vh] max-w-4xl">
         <p className="text-[11px] uppercase tracking-[.3em] text-rust">Room {r.n}</p>
         <h2 className="mt-4 font-display text-[clamp(2.8rem,7vw,6.5rem)] leading-[.95]">{r.title}</h2>
@@ -144,13 +130,38 @@ function Room({ i, children, dark }: { i: number; children: ReactNode; dark?: bo
     </section>)
 }
 
-const Pair = ({ o, items }: { o: typeof SLOGANS; items: { label: string; alt: string; pair: string[]; aspect: string }[] }) => (
-  <div className="grid items-center gap-12 md:grid-cols-12">
-    <Reveal className="md:col-span-4"><Plaque dark name={o.name} medium={o.medium} title={o.title}><Paras t={o.text} /></Plaque></Reveal>
-    <Reveal delay={0.2} className="grid gap-10 sm:grid-cols-2 md:col-span-8">
-      {items.map(x => <FlipArtifact key={x.label} frontImage={x.pair[0]} backImage={x.pair[1]} altText={x.alt} label={x.label} aspect={x.aspect} />)}
-    </Reveal>
-  </div>)
+/* Gallery of fronts only. Click opens a large modal where the object can be flipped to its back. */
+const Pair = ({ o, items }: { o: typeof SLOGANS; items: { label: string; alt: string; pair: string[]; aspect: string; note: string }[] }) => {
+  const [open, setOpen] = useState<number | null>(null)
+  const x = open !== null ? items[open] : null
+  return (
+    <div className="grid items-center gap-10 md:grid-cols-[minmax(0,24rem)_minmax(0,1fr)] md:gap-x-12">
+      <Reveal><Plaque dark name={o.name} medium={o.medium} title={o.title}><Paras t={o.text} /></Plaque></Reveal>
+      <Reveal delay={0.2} className="grid grid-cols-2 gap-6">
+        {items.map((it, k) => (
+          <button key={it.label} onClick={() => setOpen(k)} aria-label={`Open ${it.label} in a large view, with flip to the back`} className="group text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-rust">
+            <div className="flex aspect-[4/5] items-center justify-center bg-[#121110] p-4 transition duration-700 group-hover:-translate-y-1">
+              <Img src={it.pair[0]} alt={`${it.alt} (front)`} className="max-h-full max-w-full object-contain" />
+            </div>
+            <p className="mt-3 text-[11px] uppercase tracking-[.2em] text-paper/60">{it.label} <span className="text-rust">· Open</span></p>
+          </button>))}
+      </Reveal>
+      <AnimatePresence>
+        {x && (
+          <ObjectModal label={x.label} onClose={() => setOpen(null)}>
+            <div className="grid items-center gap-8 md:grid-cols-[1.2fr_1fr]">
+              <FlipArtifact frontImage={x.pair[0]} backImage={x.pair[1]} altText={x.alt} label={x.label} aspect={x.aspect} />
+              <div>
+                <p className="text-[11px] uppercase tracking-[.22em] text-[#8C4331]">{o.medium}</p>
+                <h3 className="mt-2 font-display text-4xl leading-tight">{o.title}</h3>
+                <p className="mt-2 text-sm italic opacity-70">{x.label}</p>
+                <p className="mt-5 text-justify hyphens-auto text-[14px] leading-relaxed">{x.note}</p>
+              </div>
+            </div>
+          </ObjectModal>)}
+      </AnimatePresence>
+    </div>)
+}
 
 const COMMONS = 'https://commons.wikimedia.org/wiki/File:Collectie_NMvWereldculturen,_RV-3155-304,_Olieverfschildering,_%27Tijgerjacht%27,_Raden_Saleh,_voor_1880.jpg'
 
@@ -170,7 +181,7 @@ export default function App() {
       </svg>
       <MuseumNavigation rooms={rooms} />
       <Hero />
-      <Statement />
+      <Statement rooms={rooms} />
       <Bar f={f} setF={setF} t={t} setT={setT} />
 
       {showI && (
@@ -181,23 +192,26 @@ export default function App() {
       {showII && (
         <Room i={1}>
           {f === 'all' && (
-            <div className="mb-[16vh]">
-              <Reveal className="mb-12"><p className="text-xs text-paper/60">{TRAIN_MEDIUM}</p><h3 className="mt-2 font-display text-5xl md:text-6xl">{TRAIN_TITLE}</h3></Reveal>
-              <TicketArchive tickets={A.trains.map(src => ({ src }))} context={TRAIN_TEXT[0]} />
-              <Reveal className="mt-16 max-w-xl text-[15px] text-paper/80"><Paras t={TRAIN_TEXT.join('\n\n')} /></Reveal>
+            <div className="mb-[16vh] grid items-center gap-10 md:grid-cols-2 md:gap-14">
+              <Reveal><TicketArchive /></Reveal>
+              <Reveal delay={0.2}>
+                <p className="text-[11px] uppercase tracking-[.22em] text-rust">{TRAIN_MEDIUM}</p>
+                <h3 className="mt-3 font-display text-5xl leading-[1.02] md:text-6xl">{TRAIN_TITLE}</h3>
+                <div className="mt-8 max-w-[54ch] text-justify hyphens-auto text-base leading-[1.8] text-paper/85 md:text-[17px]"><Paras t={TRAIN_TEXT.join('\n\n')} /></div>
+              </Reveal>
             </div>)}
-          <div className="grid gap-10 md:grid-cols-12">
-            <Reveal className="md:col-span-4"><Plaque dark medium={TIKTOK.medium} title={TIKTOK.title} notes={TIKTOK.title}><Paras t={TIKTOK.text.join('\n\n')} /></Plaque></Reveal>
-            <Reveal delay={0.2} className="md:col-span-8"><GlitchArtwork srcs={A.tiktok} /></Reveal>
+          <div className="grid items-center gap-10 md:grid-cols-[minmax(0,26rem)_minmax(0,1fr)] md:gap-x-12">
+            <Reveal><Plaque dark medium={TIKTOK.medium} title={TIKTOK.title} notes={TIKTOK.title}><Paras t={TIKTOK.text.join('\n\n')} /></Plaque></Reveal>
+            <Reveal delay={0.2} className="mx-auto w-full max-w-2xl"><GlitchArtwork srcs={A.tiktok} /></Reveal>
           </div>
         </Room>)}
 
       {showIII && (
         <Room i={2} dark>
           <div className="space-y-[16vh]">
-            <SpotifySection><Reveal><Plaque dark name={SPOTIFY.name} medium={SPOTIFY.medium} title={SPOTIFY.title}><Paras t={SPOTIFY.text} /></Plaque></Reveal></SpotifySection>
-            <Pair o={SLOGANS} items={[{ label: 'Jaehyun Fancon slogan', alt: 'Jaehyun fancon slogan', pair: A.slogan.jaehyun, aspect: '3/4' }, { label: 'NCT DREAM slogan', alt: 'NCT DREAM encore slogan', pair: A.slogan.nct, aspect: '4/3' }]} />
-            <Pair o={TICKETS} items={[{ label: 'Jaehyun Fancon ticket', alt: 'Jaehyun fancon ticket', pair: A.ticket.jaehyun, aspect: '4/3' }, { label: 'NCT DREAM ticket', alt: 'NCT DREAM encore ticket', pair: A.ticket.nct, aspect: '3/4' }]} />
+            <SpotifySection><Reveal><Plaque dark name={SPOTIFY.name} medium={SPOTIFY.medium} title={SPOTIFY.title}><Paras t={SPOTIFY.text + '\n\n' + SIDE_NOTE} /></Plaque></Reveal></SpotifySection>
+            <Pair o={SLOGANS} items={[{ label: 'Jaehyun Fancon slogan', alt: 'Jaehyun fancon slogan', pair: A.slogan.jaehyun, note: PIECE_NOTES.jaehyunSlogan, aspect: '3/4' }, { label: 'NCT DREAM slogan', alt: 'NCT DREAM encore slogan', pair: A.slogan.nct, note: PIECE_NOTES.nctSlogan, aspect: '4/3' }]} />
+            <Pair o={TICKETS} items={[{ label: 'Jaehyun Fancon ticket', alt: 'Jaehyun fancon ticket', pair: A.ticket.jaehyun, note: PIECE_NOTES.jaehyunTicket, aspect: '4/3' }, { label: 'NCT DREAM ticket', alt: 'NCT DREAM encore ticket', pair: A.ticket.nct, note: PIECE_NOTES.nctTicket, aspect: '3/4' }]} />
           </div>
         </Room>)}
 

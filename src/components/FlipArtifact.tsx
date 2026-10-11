@@ -9,7 +9,7 @@ export default function FlipArtifact({ frontImage, backImage, altText, label, in
       <button onClick={() => setBack(b => !b)} aria-pressed={back}
         aria-label={`${label}. ${back ? 'Showing the back. Activate to flip back.' : 'Showing the front. Activate to view the back.'}`}
         style={{ aspectRatio: aspect }}
-        className="w-full max-w-sm cursor-pointer [perspective:1500px] focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-rust">
+        className="w-full max-w-md md:max-w-lg cursor-pointer [perspective:1500px] focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-rust">
         <motion.div className="relative h-full w-full [transform-style:preserve-3d]" animate={{ rotateY: back ? 180 : 0 }} transition={{ duration: 0.9, ease: [0.45, 0.05, 0.25, 1] }}>
           <img src={frontImage} alt={`${altText} (front)`} className={face} loading="lazy" />
           <img src={backImage} alt={`${altText} (back)`} className={`${face} [transform:rotateY(180deg)]`} loading="lazy" />
